@@ -10,7 +10,9 @@ public class TypeCastingEx01 {
 		// 정수 리터럴은 자료형에 맞는 타입으로 자동으로 설정
 		byte num2 = 3;
 		long num3 = 3;
-		int num4 = (int)12345678901L; // 
+		int num4 = (int)12345678901L; 
+		// 10자리(십억)밖에 안되는 int. 
+		// 접미사L을 써서 long으로 만들어 준 뒤 int로 강제 형변환 해준다
 		
 
 	}
