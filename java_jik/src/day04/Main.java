@@ -13,26 +13,17 @@ public class Main {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); 
 		
-		int num1, num2, result;
 		
-		bw.write("테스트 횟수를 입력하세요 : ");
-		bw.flush(); 
 		int T = Integer.parseInt(bf.readLine());
 		
-		bw.write("두 정수를 입력하세요 : ");
-		bw.flush(); 
-		StringTokenizer st = new StringTokenizer(bf.readLine());
+		StringTokenizer st;
 		for(int i = 1; i <= T; i++) {
-			num1 = Integer.parseInt(st.nextToken());
-			num2 = Integer.parseInt(st.nextToken());
-			result = num1 + num2;
-			bw.write(result);
-			bw.flush();
+//			num1 = Integer.parseInt(st.nextToken());
+//			num2 = Integer.parseInt(st.nextToken());
+			st = new StringTokenizer(bf.readLine());
+			bw.write(Integer.parseInt(st.nextToken()) + (Integer.parseInt(st.nextToken())) + "\n");
 		}
-		
-		
-
-		bw.flush();   
+		 
 		bw.close();
 	}
 
