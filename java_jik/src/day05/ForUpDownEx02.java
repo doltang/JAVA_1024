@@ -24,7 +24,7 @@ public class ForUpDownEx02 {
 			int r = (int)(Math.random() * (max - min + 1) + min);
 			System.out.println(r);		
 			Scanner sc = new Scanner(System.in);		
-			a = min - 1; 
+			a = min - 1; // 이렇게 해주는 이유는 무조건 한번은 실행시키기 위해서!
 			for ( ; r != a ; ) {
 			System.out.print("숫자를 입력하세요 : ");
 			a = sc.nextInt();
