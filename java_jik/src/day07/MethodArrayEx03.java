@@ -24,7 +24,5 @@ public class MethodArrayEx03 {
 			}
 		}
 		return false;
-		
-
 	}
 }
