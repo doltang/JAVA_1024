@@ -1,8 +1,8 @@
-package day09;
+package day10;
 
 import java.util.Scanner;
 
-public class aseballManager_1 {
+public class BaseballManager_1 {
 
 	public static void main(String[] args) {
 		/* 숫자 야구게임을 플레이 한 후, 기록을 저장하는 프로그램을 작성하라
