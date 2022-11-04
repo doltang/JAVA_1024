@@ -19,7 +19,6 @@ public class BaseballManager {
 		 * 4. 춘향이 4회
 		 * */
 		Scanner scan = new Scanner(System.in);
-		Players [] list = new Players [5];
 		// 반복문을 통해 메뉴를 출력
 		int menu;
 		int count = 0;
