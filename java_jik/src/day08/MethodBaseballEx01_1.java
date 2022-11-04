@@ -114,6 +114,7 @@ public class MethodBaseballEx01_1 {
 		}
 		return ball - strike;
 	}
+
 	
 	/**
 	 * 기능 : Scanner가 주어지면 정수를 size개만큼 입력받아 배열에 저장하고, 
