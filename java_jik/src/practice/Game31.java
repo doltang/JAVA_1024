@@ -13,19 +13,19 @@ public class Game31 {
 		for(int tmp : num) {
 			System.out.print(tmp + " ");
 		}
-		//System.out.println(num);
-//		for(int i = 0; i < num.length;) {
-//			// 컴퓨터가 랜덤 1-3개 출력 (숫자는 순차적)
-//			// 랜덤으로 1-3개의 인덱스를 가지는 배열 만들기
-//			int r = random(1, 3);
-//			int [] com = new int [r];
-//			for(int j = 0; j < com.length; j++) {
-//				com[j] = num[j];
-//			}
-//			for(int tmp : com) {
-//				System.out.print(tmp + " ");
-//			}
-//		}
+		System.out.println(num);
+		for(int i = 0; i < num.length;) {
+			// 컴퓨터가 랜덤 1-3개 출력 (숫자는 순차적)
+			// 랜덤으로 1-3개의 인덱스를 가지는 배열 만들기
+			int r = random(1, 3);
+			int [] com = new int [r];
+			for(int j = 0; j < com.length; j++) {
+				com[j] = num[j];
+			}
+			for(int tmp : com) {
+				System.out.print(tmp + " ");
+			}
+		}
 			// 사용자가 몇 개의 숫자를 부를지 입력
 			// 마지막에 3을 부르는 사람이 진다
 			// 게임을 더 할 건지 물어본다 (y/n) :y = 게임이 계속 된다 n = 메뉴로 돌아간
