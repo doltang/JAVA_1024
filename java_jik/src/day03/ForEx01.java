@@ -21,6 +21,11 @@ public class ForEx01 {
 		for(i = 1; i <= 5; i++) {
 			System.out.println("Hello world");
 		}
+		// while로 변경
+		while(i <= 5) {
+			System.out.println("Hello world");
+			i++;
+		}
 
 	}
 

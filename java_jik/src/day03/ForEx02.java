@@ -9,6 +9,13 @@ public class ForEx02 {
 		for(int i = 1; i < 6; i++) {
 			System.out.println(i);
 		}
+		
+		// while로 변경
+		int i = 1;
+		while(i < 6) {
+			System.out.println(i);
+			i++;
+		}
 
 	}
 
