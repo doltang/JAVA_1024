@@ -62,6 +62,7 @@ class Tire{
 }
 
 class Car{
+	// 필드
 	public Tire[] tires; // 자료형이 Tire클래스인 배열
 	public int tireCount;
 	public String type;
@@ -72,6 +73,7 @@ class Car{
 	public char gear;
 	public String company;
 	
+	// 생성자
 	public Car(int tireCount, String type, int color, String carNum, String company) {
 		this.tireCount = tireCount <= 0 ? 4 : tireCount;
 		this.type = type;
@@ -81,6 +83,7 @@ class Car{
 		this.gear = 'P';
 		tires = new Tire[tireCount];
 	}
+	// 메소드
 	// 전원 켜기/끄기
 	public void powerOn() { power = true;}
 	public void powerOff() { power = false;}
@@ -111,7 +114,7 @@ class Car{
 // 부모 클래스의 생성자가 기본 생성자이면 자식 클래스에 부모 생성자 생략해도 되는데 
 // 기본 생성자가 아니기 때문에 자식 클래스에 직접 부모생성자를 올려줘야 한다 (super이용)
 class KiaCar extends Car{
-
+	
 	public KiaCar(int tireCount, String type, int color, String carNum) {
 		super(tireCount, type, color, carNum, "기아");
 	}
