@@ -21,7 +21,7 @@ public class InheritanceEx01 {
 class Child1 extends Parent1{
 	//  생성자
 	public Child1() {
-		super(1,2,3); // 만일 부모 생성자가 추가되면 기본 생성자가 없어지기 때문에 
+		//super(1,2,3); // 만일 부모 생성자가 추가되면 기본 생성자가 없어지기 때문에 
 					  // 반드시 자식 클래스의 맨 첫 줄에 써줘야 한다
 		// super(); 부모 생성자를 명시하지 않아도 자동으로 super()가 추가가 된다
 		//num1 = 10; // 접근 제한자가 private이어서 자식 클래스에서 사용하지 못함
@@ -42,18 +42,18 @@ class Parent1{
 	int num2 = 2;
 	protected int num3 = 3;
 	
+	// 부모 클래스 메소드
 	public void print() {
 		System.out.println(num1);
 		System.out.println(num2);
 		System.out.println(num3);
 	}
-	public Parent1(int num1, int num2, int num3) {
-		this.num1 = num1;
-		this.num2 = num2;
-		this.num3 = num3;
-	}
+	// 부모 클래스 생성자
+//	public Parent1(int num1, int num2, int num3) {
+//		this.num1 = num1;
+//		this.num2 = num2;
+//		this.num3 = num3;
+//	}
 	
-	
-	
-	
+
 }

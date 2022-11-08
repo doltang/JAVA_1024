@@ -37,16 +37,16 @@ public class StringEx01_1 {
 		 * 리터럴 문자열은 리터럴들만 모여있는 공간에 할당이 되는데, 같은 리터럴 문자열이 있는
 		 * 경우 새로 만들지 않고 기존에 있는 리터럴 문자열의 주소를 반환
 		 * */
-		String str1 = "abc";
-		String str2 = "abc";
-		String str3 = new String("abc");
+		String str1 = "abc"; // 리터럴만 저장되는 공간에 저장
+		String str2 = "abc"; // 리터럴만 저장되는 공간에 저장
+		String str3 = new String("abc"); // 객체로 생성 -> heap에 저장
 		System.out.println("str1 : " + str1);
 		System.out.println("str2 : " + str2);
 		System.out.println("str3 : " + str3);
-		System.out.println("str1과 str2가 같다?(==) : " + (str1 == str2));
-		System.out.println("str1과 str3가 같다?(==) : " + (str1 == str3));
-		System.out.println("str1과 str2가 같다?(equals) : " + (str1.equals(str2)));
-		System.out.println("str1과 str3가 같다?(equals) : " + (str1.equals(str3)));
+		System.out.println("str1과 str2가 같다?(==) : " + (str1 == str2)); // true
+		System.out.println("str1과 str3가 같다?(==) : " + (str1 == str3)); // false 참조하는 주소가 다르기 떄문
+		System.out.println("str1과 str2가 같다?(equals) : " + (str1.equals(str2))); // true
+		System.out.println("str1과 str3가 같다?(equals) : " + (str1.equals(str3))); // true
 		
 		/* charAt(번지) : 문자열에서 해당 번지에 있는 문자열을 반환
 		 * */
@@ -58,7 +58,7 @@ public class StringEx01_1 {
 		String fruit = "사과,배,오렌지,귤";
 		String []fruits = fruit.split(",");
 		for(String tmp : fruits) {
-			System.out.println(tmp);
+			System.out.println(tmp + " ");
 		}
 		/* trim() : 시작 문자 앞에있는 공백을 제거하고 마지막 문자 뒤에 있는 공백을 제거함*/
 		String str5 = "\n\n     \t안녕 하세요.\n\n";

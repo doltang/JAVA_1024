@@ -1,6 +1,6 @@
 package day11;
 
-public class ClassUpCasting {
+public class ClassUpCastingEx01 {
 
 	public static void main(String[] args) {
 		/* 자식 클래스인 kiaCar 객체를 부모 클래스인 Car 객체에 저장 : 업 캐스팅

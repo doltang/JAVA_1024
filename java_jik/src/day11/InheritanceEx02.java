@@ -3,7 +3,7 @@ package day11;
 public class InheritanceEx02 {
 
 	public static void main(String[] args) {
-		KiaCar kcar = new KiaCar(4, "K5", 0xff000, "134가1234"); // 16진수 오류..
+		KiaCar kcar = new KiaCar(4, "K5", 0xff000, "134가1234"); 
 		kcar.powerOn();
 		kcar.changeGear('D');
 		for(int i = 0; i <30; i++) {
@@ -62,7 +62,7 @@ class Tire{
 }
 
 class Car{
-	public Tire[] tires;
+	public Tire[] tires; // 자료형이 Tire클래스인 배열
 	public int tireCount;
 	public String type;
 	public int color;
@@ -100,7 +100,7 @@ class Car{
 	public void breaker() {
 		speed = speed <= 0 ? 0 : speed - 1; 
 	}
-	
+	// 상태 출력
 	public void print() {
 		System.out.println("전원 : " + (power ? "on" : "off"));
 		System.out.println("속력 : " + speed);
