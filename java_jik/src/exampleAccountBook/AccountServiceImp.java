@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.function.Predicate;
+
+import day19.Student;
 
 public class AccountServiceImp implements AccountService{
 	// 인터페이스를 구현하는 구현 클래스
@@ -192,6 +195,17 @@ public class AccountServiceImp implements AccountService{
 			System.out.println(item);
 		}
 	}
+	
+	// Predicate로 위에 메소드 다시 만들어보기
+	@Override
+	public void printItem(ArrayList<Item> list, Predicate<Item> p) {
+		for(Item item : list) {
+			if(p.test(item))
+			System.out.println(item);
+		}
+		
+	}
+	
 	@Override
 	public int inputYear(Scanner scan) {
 		System.out.println("연도 입력 : ");
@@ -237,19 +251,27 @@ public class AccountServiceImp implements AccountService{
 			break;
 		case 2 :
 			year = inputYear(scan);
-			printItem(list, year);
+			//printItem(list, year);
+			printItem(list, (s) -> s.getDateStr().substring(0, 4).equals(""+year));
 			break;
 		case 3 :
 			year = inputYear(scan);
 			month = inputMonth(scan);
-			printItem(list, year, month);	
+			//printItem(list, year, month);	
+			printItem(list, (s) -> s.getDateStr().substring(0, 7).equals(""+year+"-" + month));
 			break;
 		case 4 :
 			year = inputYear(scan);
 			month = inputMonth(scan);
 			day = inputDay(scan);
-			printItem(list, year, month, day);	
+			//printItem(list, year, month, day);	
+			printItem(list, (s) -> s.getDateStr().substring(0, 10).equals(""+year+"-" + month+"-" + day));
 			break;
+		// 람다식을 적용하면 따로 메소드를 더 만들 필요 없이 다른 분류 선택지를 만들 수 있다
+//		case 5 : 
+//			System.out.println("수입/지출 선택 : ");
+//			String type = scan.next();
+//			printItem(list, (s)->s.getType().equals(type));
 		default: 				
 		}
 		
