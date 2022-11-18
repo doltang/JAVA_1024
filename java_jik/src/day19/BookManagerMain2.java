@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import day17.Board2;
 
-public class BookManagerMain {
+public class BookManagerMain2 {
 	/* 도서 관리 프로그램 작성
 	 * 도서 정보 
 	 * - 도서명, 저자(여러명, 엮은이, 옮긴이 다 포함), 가격, 출판사, 장르, ISBN
