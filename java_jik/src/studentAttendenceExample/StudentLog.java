@@ -16,4 +16,5 @@ public class StudentLog {
 		this.std = new Student(std);
 		this.state = state;
 	}
+	
 }

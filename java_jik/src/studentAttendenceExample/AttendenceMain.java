@@ -1,7 +1,10 @@
 package studentAttendenceExample;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+
+import javax.swing.text.html.CSS;
 
 public class AttendenceMain {
 
@@ -41,13 +44,17 @@ public class AttendenceMain {
 		// 왜 리스트가 아닌가? -> 안에 우리가 원하는 리스트가 들어있기 때문
 		Attendence attendance = new Attendence();
 		do {
-			printMenu();
-			
-			menu = sc.nextInt();
-			sc.nextLine(); // 엔터 처리
-			System.out.println("===================");
-			
-			runMenu(menu, attendance);
+			try {
+				printMenu();
+				
+				menu = sc.nextInt();
+				sc.nextLine(); // 엔터 처리
+				System.out.println("===================");
+				
+				runMenu(menu, attendance);
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
 			
 		}while(menu != 3);
 	}
@@ -100,7 +107,7 @@ public class AttendenceMain {
 			managementStudents(stds);
 			break;
 		case 2 :
-			//managementLogs(logs, stds);
+			managementLogs(logs, stds);
 			break;
 		case 3 : 
 			printStr("프로그램을 종료합니다.");
@@ -110,7 +117,7 @@ public class AttendenceMain {
 		}
 		
 	}
-	public static void managementStudents(ArrayList<Student> stds) {
+	private static void managementStudents(ArrayList<Student> stds) {
 		printSubMenu(1);
 		int subMenu = sc.nextInt();
 		sc.nextLine();
@@ -123,7 +130,7 @@ public class AttendenceMain {
 		default :	printStr("메뉴를 잘못 입력했습니다.");
 		}
 	}
-	public static void addStudent(ArrayList<Student> stds) {
+	private static void addStudent(ArrayList<Student> stds) {
 		if(stds == null) 
 			throw new RuntimeException("예외 발생 : 학생 정보를 관리하는 리스트가 없습니다.");
 			
@@ -139,7 +146,7 @@ public class AttendenceMain {
 		stds.add(std);
 		printStr("학생 정보를 추가 했습니다.");
 	}
-	public static void updateStudent(ArrayList<Student> stds) {
+	private static void updateStudent(ArrayList<Student> stds) {
 		if(stds == null) 
 			throw new RuntimeException("예외 발생 : 학생 정보를 관리하는 리스트가 없습니다.");
 			
@@ -161,7 +168,7 @@ public class AttendenceMain {
 		stds.set(index, std); // index 위치에 std를 덮어 씌운다
 		printStr("학생 정보를 수정 했습니다.");
 	}
-	public static void deleteStudent(ArrayList<Student> stds) {
+	private static void deleteStudent(ArrayList<Student> stds) {
 		if(stds == null) 
 			throw new RuntimeException("예외 발생 : 학생 정보를 관리하는 리스트가 없습니다.");
 			
@@ -178,4 +185,180 @@ public class AttendenceMain {
 		stds.remove(index);
 		printStr("학생 정보를 수정 했습니다.");
 	}
-}
+	
+	private static void managementLogs(ArrayList<Log> logs, ArrayList<Student> stds) {
+			printSubMenu(2);
+			int subMenu = sc.nextInt();
+			printBar();
+			switch(subMenu) {
+			case 1 : 
+				checkLog(logs, stds);	
+				sortLogs(logs); // 일지 정렬(기능별로 구분하기 쉽게하기 위해)
+				break;
+			case 2 :
+				printLogsByStudent(logs);
+				break;
+			case 3 :
+				printLogsByDate(logs);
+				break;
+			case 4 :
+				updateLogs(logs);
+				break;
+			case 5 :
+				deleteLogs(logs);
+				break;
+			case 6 : printStr("취소합니다."); break;
+			default: printStr("잘못된 메뉴입니다.");
+			}		
+		}
+	
+	private static void checkLog(ArrayList<Log> logs, ArrayList<Student> stds) {
+		// 날짜 입력
+		sc.nextLine();
+		System.out.print("출석 일자(yy.MM.dd) :");
+		String date = sc.nextLine();
+		printBar();
+		// 이미 입력된 날짜인지 확인
+		if(checkLogDate(logs, date)) {
+			printStr("이미 출석 체크한 일자입니다.");
+			return;
+		}
+		// 출석 상태 정보 출력(결석 : X, 출석 : O, 지각 : /, 조퇴 : \)
+		printStr("결석 : X, 출석 : O, 지각 : /, 조퇴 : \\");
+		// StudentLog(이름, 생일, 출결)를 리스트로 생성
+		ArrayList<StudentLog> stdLogs = new ArrayList<StudentLog>();
+		// 홍길동(20.05.05) : O
+		// 반복 
+		for(Student std : stds) {
+			// StudentLog를 생성
+			// 학생 이름과 생일 출력
+			System.out.print(std.getName() + "(" + std.getBirthday() +") : ");
+			// 출석 상태 입력
+			String state = sc.nextLine();
+			// StudentLog를 생성
+			StudentLog stdLog = new StudentLog(std, state);
+			// StudentLog 리스트에 추가
+			stdLogs.add(stdLog);
+		}
+		// StudentLogs 리스트와 날짜를 이용하여 Log 객체를 생성
+		Log log = new Log(stdLogs, date);
+		// Log 리스트에 생성된 Log 객체를 추가
+		logs.add(log);
+	}
+	
+	private static boolean checkLogDate(ArrayList<Log> logs, String date) {
+		if(logs == null || date == null)
+			throw new RuntimeException("일지 리스트가 없거나 날짜가 없습니다.");
+		if(logs.size() == 0)
+			return false;
+		for(Log log : logs) {
+			if(log.getDate().equals(date))
+				return true;
+		}
+		return false;
+	}
+	
+	private static void sortLogs(ArrayList<Log> logs) {
+		if(logs == null || logs.size() == 0)
+			return;
+		Collections.sort(logs, (o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+	}
+	
+	private static void printLogsByStudent(ArrayList<Log>logs) {
+		if(logs == null || logs.size() == 0) {
+			printStr("등록된 출석체크가 없습니다.");
+			return;
+		}
+		// 이름을 입력
+		sc.nextLine();
+		System.out.print("이름을 입력하세요 : ");
+		String name = sc.nextLine();
+		printBar();
+		
+		// 입력받은 이름과 일치하는 출석체크 목록을 확인
+		// 2022.11.23 : O
+		for(Log log : logs) {
+			for(StudentLog slog : log.getSlogs()) {
+				if(slog.getStd().getName().equals(name)) {
+					System.out.println(log.getDate() + " : " + slog.getState());
+				}
+			}
+		}
+	}
+	
+	private static void printLogsByDate(ArrayList<Log>logs) {
+		sc.nextLine();
+		// 날짜 입력
+		System.out.print("날짜 입력 :");
+		String date = sc.nextLine();
+		// 날짜와 일치하는 출석 기록 확인
+		// 학생명(생일) : O
+		for(Log log : logs) {
+			if(log.getDate().equals(date)) {
+				for(StudentLog slog : log.getSlogs()) {
+					String name = slog.getStd().getName();
+					String birth = slog.getStd().getBirthday();
+					System.out.println(name + "(" + birth + ") : " + slog.getState());
+				}
+			}
+		}
+	}
+	
+	private static void updateLogs(ArrayList<Log> logs) {
+		sc.nextLine();
+		// 날짜를 입력
+		System.out.print("날짜 입력 : ");
+		String date = sc.nextLine();
+		printBar();
+		
+		if(!checkLogDate(logs, date)) {
+			printStr("해당 일자에 등록된 출석체크가 없습니다.");
+			return;
+		}
+		// 이름과 생년월일을 입력
+		System.out.print("이름 입력 : ");
+		String name = sc.nextLine();
+		System.out.print("생일 입력 : ");
+		String birth = sc.nextLine();
+		// 상태를 입력
+		System.out.print("상태 입력 : ");
+		String state = sc.nextLine();
+		printBar();
+		// 입력한 정보와 일치하는 출석정보를 수정
+		for(Log log : logs) {
+			if(log.getDate().equals(date)) {
+				for(StudentLog slog : log.getSlogs()) {
+					String tmpName = slog.getStd().getName();
+					String tmpBirth = slog.getStd().getBirthday();
+					if(tmpName.equals(name) && tmpBirth.equals(birth)) {
+						slog.setState(state);
+					}
+				}
+				printStr("수정이 완료됐습니다.");
+				return;
+			}
+		}
+	}
+	
+	private static void deleteLogs(ArrayList<Log> logs) {
+		sc.nextLine();
+		// 날짜를 입력
+		System.out.print("날짜 입력 : ");
+		String date = sc.nextLine();
+		printBar();
+		
+		if(!checkLogDate(logs, date)) {
+			printStr("해당 일자에 등록된 출석체크가 없습니다.");
+			return;
+		}
+		// 번지로 접근할거라 향상된 for문 사용 안함
+		for(int i = 0; i<logs.size(); i++) {
+			if(logs.get(i).getDate().equals(date)){
+				logs.remove(i);
+				printStr("삭제가 완료됐습니다.");
+				return;
+			}
+		}
+	}
+	
+}//class

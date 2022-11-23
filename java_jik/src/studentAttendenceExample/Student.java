@@ -16,4 +16,5 @@ public class Student {
 		this.name = std.name;
 		this.birthday = std.birthday;
 	}
+	
 }
