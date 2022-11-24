@@ -61,7 +61,7 @@ import lombok.Data;
 	}
 	@Data
 	class Student implements Serializable{
-		private static final long serialVersionUID = 1700858336115503227L;
+		private static final long serialVersionUID = 1700858336115503227L; // 얜 뭐지?
 		private String name;
 		private String birthday;
 		
