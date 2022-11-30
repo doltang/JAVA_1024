@@ -50,7 +50,7 @@ public class BoardMain {
 			do {
 				printMenu3();			
 				menu3 = sc.nextInt();
-				runMenu3(menu3, memberList);
+				runMenu3(menu3, memberList, loginList);
 			}while(menu3 != 4);
 			break;
 		case 4 : 
@@ -65,10 +65,10 @@ public class BoardMain {
 	}
 
 
-	private static void runMenu3(int menu3, ArrayList<Member> memberList) {
+	private static void runMenu3(int menu3, ArrayList<Member> memberList, ArrayList<Member> loginList) {
 		switch(menu3) {
 		case 1 :
-			writeBoard(memberList);
+			writeBoard(memberList, loginList);
 			break;
 		case 2 :
 			break;
@@ -82,11 +82,31 @@ public class BoardMain {
 		}	
 	}
 
-	private static void writeBoard(ArrayList<Member>memberList) {
+	private static void writeBoard(ArrayList<Member>memberList, ArrayList<Member> loginList) {
+		sc.nextLine();
 		// 게시글 등록
-		// 이름 입력
-		
+		if(loginList == null || loginList.size() == 0) {
+			printStr("로그인이 필요한 서비스입니다.");
+			return;
+		}
+		// 아이디 입력
+		System.out.print("작성자 id : ");
+		String id = sc.nextLine();
+		for(Member member : memberList) {
+			if(!(member.getId().equals(id))) {
+				printStr("회원이 아니거나 아이디가 잘못 되었습니다.");
+				return;
+			}
+		}
+		for(Member login : loginList) {
+			if(!(login.getId().equals(id))) {
+				printStr("로그인이 필요한 서비스입니다.");
+				runMenu(2, memberList, loginList);
+			}
+		}
+		memberList.indexOf(id);
 		// 카테고리 입력
+
 		// 제목 입력
 		// 내용 입력
 		
