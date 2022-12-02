@@ -62,6 +62,13 @@ public class Board {
 	public Board(int num) {
 		this.num = num;
 	}
+
+	public Board(String title, String content) {
+		int num;
+		this.title = title;
+		this.content = content;
+		String writer;
+	}
 	
 	
 }
