@@ -16,6 +16,7 @@ public class Ex01_Client {
 			socket = new Socket();
 			System.out.println("[연결 시도 중]");
 			socket.connect(new InetSocketAddress("localhost",5001));//내부 호스트 확인
+			// socket.connect(new InetSocketAddress("서버 IP 주소",5001)); // 주소가 없으면 내 pc와 연결
 			System.out.println("[연결 성공]");
 			send(socket, "Student");
 			recieve(socket);

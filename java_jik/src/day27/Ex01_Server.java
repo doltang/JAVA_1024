@@ -20,6 +20,8 @@ public class Ex01_Server {
 		try {
 			serverSocket = new ServerSocket();
 			serverSocket.bind(new InetSocketAddress(5001));//포트번호 숫자는 아무거나해도 됨
+			// 아이피 주소나 도메인 명 추가 가능
+			//serverSocket.bind(new InetSocketAddress("IP주소 / 도메인 명", 5001)); 
 			System.out.println("[서버 시작]");
 			while(true) {//무한 대기 중
 				Socket socket = serverSocket.accept(); //클라에게 소켓 정보 전달
