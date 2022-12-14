@@ -16,3 +16,4 @@ revoke all on shoppingmall2.* from test1;
 
 -- 계정 삭제
 drop user test;
+

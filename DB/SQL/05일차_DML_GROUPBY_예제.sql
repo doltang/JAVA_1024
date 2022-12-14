@@ -29,5 +29,7 @@ select pr_pc_num as 카테고리번호, count(pr_num) as '카테고리별 등록
 	group by pr_pc_num;
     
 -- 사용자별 총 구매 제품 개수 조회
+use shoppingmall;
 select bu_me_id as 사용자아이디, sum(bu_amount) as 구매개수 from buy
 	group by bu_me_id;
+select bu_me_id, bu_amount from buy;
