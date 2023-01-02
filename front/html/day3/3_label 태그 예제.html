@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 
+		label 태그는 주로 input태그와 함께 사용
+	 -->
+	 <!-- 
+		취미를 선택하는 화면을 구성
+		- 운동, 독서, 음악감상, 여행, 쇼핑, 낮잠
+	  -->
+		<form action="">
+			취미를 선택하세요(최대 3개) <br>
+				<input type="checkbox" name="hobby" value="운동" id="health"> 
+				<label for="health">운동</label> <br>
+				<input type="checkbox" name="hobby" value="독서" id="reading"> 
+				<label for="reading">독서</label> <br>
+				<input type="checkbox" name="hobby" value="음악감상" id="music"> 
+				<label for="music">음악감상</label> <br>
+				<input type="checkbox" name="hobby" value="여행" id="trip"> 
+				<label for="trip">여행</label> <br>
+				<input type="checkbox" name="hobby" value="쇼핑" id="shopping"> 
+				<label for="shopping">쇼핑</label> <br>
+				<input type="checkbox" name="hobby" value="낮잠" id="nap"> 
+				<label for="nap">낮잠</label> <br>
+				<!-- input 태그를 label태그 안에 넣는 경우 id 생략 가능 -->
+				<label>
+					<input type="checkbox" name="hobby" vlaue="춤추기"> 춤추기
+				</label> <br>
+				<button>전송</button>
+		</form>
+	
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px; height: 100px;
+			border: 10px solid transparent;
+			padding: 20px;
+		}
+		.box1{ background-color: pink; background-clip: padding-box;}
+		.box2{ background-color: pink; background-clip: border-box;}
+		.box3{ background-color: pink; background-clip: content-box;}
+		.box4{
+			background-image: url(../img/cat.jpg);
+			/* background-size: 50px 50px; */
+			background-size: contain;
+			background-repeat: repeat-y;
+		}
+		.box5{
+			background-image: url(../img/cat.jpg);
+			background-size: cover;
+			background-repeat: repeat-y;
+			background-position: 0 0 ;
+		}
+		.box6{
+			background-image: url(../img/cat.jpg);
+			background-size: 100px 100px;
+			background-repeat: no-repeat;
+			background-origin: padding-box;
+		}
+		.box7{
+			height: 1000px;
+			background-image: url(../img/cat2.jpg);
+			background-attachment: fixed;
+		}
+		/* 
+		background : image값 repeat값 attechment값 position값
+			clip값 origin값 size값
+		*/
+	</style>
+</head>
+<body>
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+	<div class="box box4"></div>
+	<div class="box box5"></div>
+	<div class="box box6"></div>
+	<div class="box box7"></div>
+</body>
+</html>
