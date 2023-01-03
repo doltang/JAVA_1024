@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	.container-box{
+		border: 2px dashed black;
+	}
+	.box{ 
+		width: calc(50% - 5px); height: 100px; background-color: red;
+		float: left;
+	}
+	.box2{
+		background-color:  green;
+		float: right;
+	}
+	.container-box::after{
+		clear: both; display: block; content: '';
+	}
+</style>
+<body>
+	<div class="container-box">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+	</div>
+</body>
+</html>
