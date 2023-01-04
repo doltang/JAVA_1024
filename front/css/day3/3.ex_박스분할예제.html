@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 3분할 예제</title>
+	<style>
+		*{
+			margin: 0;
+		}
+		.box-container{
+			border: 2px dashed rgb(32, 64, 207);
+			float: left;
+		}
+		.box-container::after{
+			content: ''; clear: both; display: block;
+		}
+		.box{
+			width: 100px; height: 100px;
+			background-color: red;
+			float: left;
+			text-align: center;
+			line-height: 100px;
+			color: white;
+		}
+		.box~.box{
+			border-left: 1px solid black;
+			margin-left: -1px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box-container">
+		<a href="https://www.naver.com/" class="box">
+			<div class="box box1">A</div>
+		</a>
+		<a href="https://heropy.blog/2020/01/27/typescript/" class="box">
+			<div class="box box2">B</div>
+		</a>
+		<a href="https://www.notion.so/DAY-52-875b0155ec64459097d5d9aa44bae369" class="box">
+			<div class="box box3">C</div>
+		</a>
+	</div>
+</body>
+</html>

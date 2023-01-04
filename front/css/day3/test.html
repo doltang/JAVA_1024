@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.box{
+			width: 100px;
+			height: 30px;
+			border: 2px solid black;
+			background-color: white;
+			box-sizing: border-box;
+		}
+		.box1{
+			border-top: none;
+		}
+		.box2{
+			display: none;
+			height: 200px;
+			position: absolute;
+			top: 30px;
+			background-color: blue;
+			margin-left: -2px;
+		}
+		.box1:hover{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1">
+		<div class=" box box2"></div>
+	</div>
+</body>
+</html>
