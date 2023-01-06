@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+		#body{
+			position: relative;
+			min-width: 1190px;
+		}
+		.inner-container{
+			width: 1130px;
+			height: 160px;
+			margin: 0 auto;
+			padding: 0 30px;
+		}
+		.box-logo{
+			width: 350px;
+			height: 100%;
+			background: pink;
+			float: left;
+		}
+		.box-logo:after{
+			content:"";
+			clear: both;
+		}
+		.box-search{
+			width: 450px;
+			border: 2px solid #6399de;
+			height: 56px;
+			margin-left: 350px;
+			position: relative;
+			border-radius: 2px;
+			line-height: 50%;
+			padding: 13px 15px;
+			box-sizing: border-box;
+		}
+		.search-input{
+			width: 100%;
+			font-size: 18px;
+			border: 0;
+			outline: 0;
+		}
+		.search-btn{
+			position: absolute;
+			width: 56px;
+			top: -2px;
+			bottom: -2px;
+			right: -2px;
+			background: #6399de;
+			border: 0;
+			color: #fff;
+			font-weight: bold;
+			border-radius: 0 3px 3px 0;
+			cursor: pointer;
+		}
+		.box-service{
+			position: absolute;
+			float: right;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="body">
+		<div id="container-search">
+			<div class="inner-container">
+				<img class="box-logo" src="" alt="네이버 로고">
+				<div class="box-search">
+					<input type="search" class="search-input">
+					<button type="submit" class="search-btn"></button>
+				</div>
+				<nav class="box-service">
+					<a href="#" class="service1">네이버를 시작페이지로</a>
+					<a href="#" class="service2">쥬니어네이버</a>
+					<a href="#" class="service3">해피빈</a>
+				</nav>
+			</div>
+		</div>
+		<div id="container-menu"></div>
+		<div id="container-main"></div>
+		<div id="container-footer"></div>
+	</div>
+</body>
+</html>
