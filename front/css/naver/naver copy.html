@@ -1,30 +1,3 @@
-Skip to content
-Product
-Solutions
-Open Source
-Pricing
-Search
-Sign in
-Sign up
-st8324
-/
-java_1024
-Public
-Code
-Issues
-1
-Pull requests
-Actions
-Projects
-Security
-Insights
-java_1024/front/css/naver/naver.html
-@st8324
-st8324 CSS 05일차 : 네이버 클론코딩 - 네이버 주니어, 해피빈, 검색창
-Latest commit e933102 now
- History
- 1 contributor
-169 lines (164 sloc)  5.02 KB
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +15,9 @@ Latest commit e933102 now
 			font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
 			line-height: 16px; font-size: 12px; color: #202020;
 			height: 1000px;
+		}
+		.container-search{
+			border-bottom: 1px solid #e4e8eb;
 		}
 		.inner-container{ 
 			width: 1130px; margin: 0 auto; padding: 0 30px;
@@ -96,7 +72,7 @@ Latest commit e933102 now
 		}
 		.box-search .form-search{
 			width: 582px; height: 52px; border: 2px solid  #19ce60;
-			border-radius: 2px; border-color: #6399de;
+			border-radius: 2px; border-color: #19ce60;
 		}
 		.box-search .input-search{
 			width: 444px; height: 24px; padding: 13px 15px;
@@ -107,7 +83,7 @@ Latest commit e933102 now
 		.box-search .btn-search{
 			position: absolute; top: 0; right: 0; bottom: 0;
 			width: 56px; background-color: #19ce60;
-			background-color: #6399de;
+			background-color: #19ce60;
 			border: 0; outline: 0;
 			border-radius: 0 2px 2px 0; cursor: pointer;
 		}
@@ -136,6 +112,234 @@ Latest commit e933102 now
 			margin: -6px 0 0 -10px;
 		}
 
+		.box-logo{
+			display: inline-block;
+			position: absolute;
+			top: 3.5%;
+			margin: 20px;
+		}
+		.box-logo .logo{
+			display: inline-block;
+			width: 222px;
+			height: 52px;
+			background-position: 0 -158px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+		}
+
+		.container-menu{
+			position: relative;
+			width: 1130px;
+			margin: 0 auto;
+			padding: 0 30px;
+			box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);
+		}
+		.container-menu .box-menu{
+			overflow: hidden;
+			position: relative;
+			padding: 11px 270px 11px 0;
+		}
+		.box-menu .list-nav{
+			float: left;
+			font-size: 15px;
+			line-height: 30px;
+			font-weight: 700;
+			letter-spacing: -.3px;
+		}
+		.box-menu .list-nav .nav-item{
+			float: left;
+			margin-right: 13px;
+		}
+		.box-menu .list-nav .nav-item .nav{
+   		text-decoration: none;
+			color: #19ce60;
+		}
+		.nav .icon-mail{
+			float: left;
+			display: inline-block;
+			width: 21px;
+			height: 21px;
+			background-position: -420px -73px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			margin: 3px 9px 0 0;
+		}
+		.nav .icon-shop{
+			width: 24px;
+			height: 20px;
+			background-position: -76px -386px;
+			background-repeat: no-repeat;
+			margin: 5px 0;
+			display: block;
+		}
+		.nav .icon-shop-live{
+			width: 54px;
+			height: 20px;
+			background-position: -209px -267px;
+			background-repeat: no-repeat;
+			margin: 5px 0;
+			display: block;
+		}
+		.nav .icon-tv{
+			float: left;
+			display: inline-block;
+			width: 12px;
+			height: 14px;
+			background-position: -256px -212px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			margin: 9px 2px 0 0;
+		}
+
+		.box-menu .list-nav.favorite-nav .nav-item .nav{
+			color: #000;
+		}
+
+		.btn-more{
+			position: absolute;
+			top: 32%;
+		}
+		.btn-more .icon-btn-more{
+			display: inline-block;
+			width: 11px;
+			height: 7px;
+			background-position: -402px -296px;
+			background-repeat: no-repeat;	
+			margin-left: 7px;
+			vertical-align: 2px;
+			margin: 5px 0 0 0;
+		}
+
+		.container-menu .box-whether{
+			position: absolute;
+			top: 0;
+			right: 30px;
+			bottom: 0;
+			overflow: hidden;
+			max-width: 270px;
+			width: 270px;
+			height: 52px;
+			text-align: right;
+			background-color: pink;
+		}
+
+		/* 공통 */
+		.clearfix::after{
+			clear: both;
+			display: block;
+			content: '';
+		}
+
+		.container-body{
+			position: relative;
+			width: 1130px;
+			padding: 20px 30px;
+			margin: 0 auto;
+			letter-spacing: -.2px;
+		}
+		.box-left{
+			float: left;
+    	width: 750px;
+		}
+		.box-right{
+			float: right;
+   		width: 350px;
+			background: pink;
+		}
+		.box-left .ad-box .frame{
+			width: 750px;
+    	height: 135px;
+		}
+		.box-left .news-box{
+			width: 750px;
+    	margin-top: 12px;
+		}
+		.news-box .news-header{
+			position: relative;
+			padding: 12px 15px 11px 15px;
+			background-color: #f7f9fa;
+			border: 1px solid #dae1e6;
+			height: 49px;
+			box-sizing: border-box;
+			line-height: 24px;
+		}
+		.news-box .news-header .link-media{
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			float: left;
+			position: relative;
+			max-width: 89px;
+			padding-right: 12px;
+			margin-right: 7px;
+			font-size: 13px;
+			color: #000;
+			font-weight: 700;
+			text-decoration: none;
+			letter-spacing: -.3px;
+		}
+		.news-box .news-header .icon-media-arr{
+			position: absolute;
+			top: 7px;
+			right: 0;
+			display: inline-block;
+			width: 6px;
+			height: 10px;
+			background-position: -262px -112px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+		}
+
+		.container-footer{
+			width: 1130px;
+			padding: 0 30px 92px;
+			margin: 0 auto;
+		}
+		.fad1{
+			display: flex;
+		}
+		.fad-img{
+			overflow: hidden;
+			position: relative;
+			width: 160px;
+			height: 86px;
+		}
+		.fad-img .thumb-img {
+			width: 160px;
+			height: 86px;
+		}
+		.fcontent-box{
+			float: left;
+			overflow: hidden;
+			height: 86px;
+			padding: 2px 2px 0 16px;
+			font-size: 12px;
+			line-height: 1.25;
+			box-sizing: border-box;
+			text-align: left;
+			color: #000;
+		}
+		.fcontent-box .fmain-title{
+			font-style: normal;
+			display: block;
+			overflow: hidden;
+			font-weight: 700;
+			letter-spacing: -0.25px;
+			color: #58c464;
+			white-space: nowrap;
+		}
+		.fcontent-box .fsub-title{
+			display: block;
+			margin-top: 6px;
+			font-size: 13px;
+			font-weight: 700;
+			line-height: 1.25;
+			letter-spacing: -0.26px;
+			color: #242424;
+			white-space: nowrap;
+		}
 
 		.blind{
 			position: absolute;
@@ -143,9 +347,10 @@ Latest commit e933102 now
 		}
 
 		.img1::after, .icon-jrnaver.img1, .icon-happybean.img1,
-		.icon-search.img1,.icon-auto-complete.img1,
-		.icon-kbd.img1{
-			background-image: url(img/img1.png);
+		.icon-search.img1,.icon-auto-complete.img1,.icon-kbd.img1,
+		.logo.img1, .icon-mail.img1, .icon-shop-live.img1, .icon-tv.img1,
+		.icon-shop.img1, .icon-btn-more.img1, .icon-media-arr.img1{
+			background-image: url(../img/naver_img.png);
 			background-size: 442px 428px;
 		}
 		
@@ -189,24 +394,152 @@ Latest commit e933102 now
 				</div>
 			</div>
 		</div>
-		<div class="container-menu"></div>
-		<div class="container-body"></div>
-		<footer class="container-footer"></footer>
+		<div class="box-logo">
+			<a href="https://www.naver.com/" class="logo img1"></a>
+			<sapn class="blind">네이버</sapn>
+		</div>
+		<div class="container-menu">
+			<nav class="box-menu">
+				<ul class="list-nav">
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<i class="icon-mail img1"></i>
+						<span class="text">메일</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+						<span class="text">카페</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">블로그</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">지식iN</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<i class="icon-shop img1"></i>
+							<span class="blind">쇼핑</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="blind">쇼핑 라이브</span>
+							<i class="icon-shop-live img1"></i>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">Pay</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<i class="icon-tv img1"></i>
+						<span class="text">TV</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="list-nav favorite-nav">
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">사전</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">뉴스</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">증권</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">부동산</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">지도</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">VIBE</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">도서</span>
+							</a>
+					</li>
+					<li class="nav-item">
+						<a href="https://mail.naver.com/" class="nav">
+							<span class="text">웹툰</span>
+							</a>
+					</li>
+				</ul>
+				<a href="#" class="btn-more">
+					더보기
+					<i class="icon-btn-more img1"></i>
+				</a>
+			</nav>
+			<div class="box-whether"></div>
+		</div>
+		<div class="container-body">
+			<div class="box-left">
+				<div class="ad-box">
+					<iframe src="add1.html" frameborder="0" class="frame"></iframe>
+				
+				</div>
+				<div class="news-box">
+					<h2 class="blind">뉴스 스탠드</h2>
+					<div class="news-header">
+						<div class="news-issue">
+							<a href="" class="link-media">
+								연합뉴스
+								<i class="icon-media-arr img1"></i>
+							</a>
+							<a href=""class="issue">
+								
+							</a>
+						</div>
+						<div class="news-direct">
+	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="box-right">
+				
+			</div>
+		</div>
+		<footer class="container-footer">
+			<div class="footer-ad">
+				<div class="wrap-fad">
+					<a href="" class="fad1">
+						<div class="fad-img">
+							<img src="../img/fad1.jpg" alt="" class="thumb-img">
+						</div>
+						<div class="fcontent-box">
+							<em class="fmain-title">온스테이지</em>
+							<strong class="fsub-title">후쿠오</strong>
+							<div class="fcontent">관심과 애정으로</div>
+							<div class="fcontent">맥락을 만드는</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</footer>
 	</div>
 </body>
 </html>
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-java_1024/naver.html at main · st8324/java_1024 · GitHub
