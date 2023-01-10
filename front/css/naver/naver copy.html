@@ -256,6 +256,8 @@
     	margin-top: 12px;
 		}
 		.news-box .news-header{
+			display: flex;
+			justify-content: space-between;
 			position: relative;
 			padding: 12px 15px 11px 15px;
 			background-color: #f7f9fa;
@@ -279,7 +281,7 @@
 			text-decoration: none;
 			letter-spacing: -.3px;
 		}
-		.news-box .news-header .icon-media-arr{
+		.icon-media-arr{
 			position: absolute;
 			top: 7px;
 			right: 0;
@@ -291,7 +293,171 @@
 			vertical-align: top;
 			content: '';
 		}
+		.list-issue{
+			width: 310px;
+			height: 100%;
+			display: block;
+			white-space: nowrap;
+		}
+		.news-header .issue{
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.news-header .issue:hover{
+			text-decoration: underline;
+		}
+		.news-header .issue a{
+			color: #000;
+		}
+		.news-header .news-direct{
+			float: right;
+			font-weight: 700;
+			height: 24px;
+			font-size: 13px;
+			text-decoration: none;
+		}
+		.news-header .news-direct .link-news-home{
+			color: #3565c9;
+			float: left;
+		}
+		.link-news-home::after{
+			background-color: #c8ccd1;
+			display: inline-block;
+			width: 3px;
+			height: 3px;
+			-webkit-border-radius: 50%;
+			border-radius: 50%;
+			vertical-align: top;
+			content: '';
+			margin-left: 8px;
+			vertical-align: 3px;
+		}
+		.news-header .news-direct .link-entertainment, .link-sports, .link-economy{
+			margin: 0 4px 0 7px;
+			color: #202020;
+		}
+		.news-box .news-title{
+			padding: 22px 0 16px;
+			height: 56px;
+			font-size: 14px;
+			line-height: 18px;
+			box-sizing: border-box;
+		}
+		.news-box .news-title .news-stand{
+			display: inline-block;
+			float: left;
+			color: #000;
+			font-weight: 700;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+		.news-box .news-title .news-stand::before{
+			display: inline-block;
+			width: 27px;
+			height: 24px;
+			background-position: -272px -342px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+			margin: -6px 1px 0 0;
+		}
+		.news-box .news-title .news-stand::after{
+			display: inline-block;
+			width: 7px;
+			height: 11px;
+			background-position: -410px -213px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+			margin-left: 6px;
+			vertical-align: -1px;
+		}
+		.news-title .news-sort{
+			float: left;
+			margin-left: 10px;
+		}
+		.news-title .news-sort .news-subs{
+			font-size: 14px;
+			color: #505050;
+		}
+		.news-title .news-sort .news-all{
+			font-size: 14px;
+			color: #505050;
+		}
+		.news-all::before{
+			background-color: #c7ccd1;
+			display: inline-block;
+			width: 4px;
+			height: 4px;
+			-webkit-border-radius: 50%;
+			border-radius: 50%;
+			vertical-align: top;
+			content: '';
+			margin: 0 8px 0 4px;
+			vertical-align: 3px;
+		}
+		.news-title .view-btns{
+			float: right;
+		}
+		.news-title .view-btns .btn-set{
+			float: left;
+    	padding: 0 9px;
+		}
+		.news-title .view-btns .icon-list{
+			display: inline-block;
+			width: 14px;
+			height: 13px;
+			background-position: -244px -310px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			opacity: .7;
+		}
+		.news-title .view-btns .icon-tile{
+			display: inline-block;
+			width: 13px;
+			height: 13px;
+			background-position: -291px -310px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			opacity: .7;
+		}
+		.news-title .view-btns .icon-set{
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			background-position: -102px -386px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			opacity: .7;
+			margin: -1px 0 1px;
+		}
+		.news-title .view-btns .btn-set:hover .icon-list,
+		.btn-set:hover .icon-tile, .btn-set:hover .icon-set{
+			opacity: 1;
+		}
+		/* news group */
+		.news-box .news-group {
+			position: relative;
+			height: 260px;
+			border: 1px solid #dae1e6;
+			border-width: 1px 1px;
+		}
+		.news-group .thumb-box {
+			position: relative;
+			float: left;
+			width: 16.66%;
+			height: 65px;		
+		}
+		.news-group .thumb-box .thumb{
+			display: block;
+			padding: 23px 0 22px;
+			text-align: center;			
+		}
+		.thumb img{
+			height: 20px;
+		}
 
+		/* footer */
 		.container-footer{
 			width: 1130px;
 			padding: 0 30px 92px;
@@ -341,6 +507,85 @@
 			white-space: nowrap;
 		}
 
+		/* 로그인 */
+		.login-box{
+			padding: 16px 16px 12px 17px;
+			background-color: #f7f9fa;
+			border: 1px solid #dae1e6;
+		}
+		.login-box .login-msg{
+			padding-left: 3px;
+    	color: grey;
+		}
+		.login-box .login-link{
+			display: flex;
+			justify-content: center;
+			padding: 15px 0;
+			margin-top: 11px;
+			background-color: #19ce60;
+			border: 1px solid #15c654;
+			-webkit-border-radius: 2px;
+			border-radius: 2px;
+			font-size: 13px;
+			color: #fff;
+			font-weight: 700;
+			text-align: center;
+		}
+		.login-box .login-link .icon-login{
+			display: inline-block;
+			width: 60px; 
+			height: 12px;
+			background-position: -202px -296px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			margin: 2px 5px 0 0;
+		}
+		.login-box .sub-area{
+			display: flex;
+			justify-content: space-between;
+			margin: 14px 8px 0 4px;
+		}
+		.look-box::before{
+			display: inline-block;
+			width: 10px;
+			height: 14px;
+			background-position: -408px -55px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+			margin: -1px 1px 1px;
+		}
+		.look-box .look-link{
+			color: #404040;
+		}
+		/* look-link 두번째 요소만 적용 */
+		.look-link+.look-link::before{
+			background-color: #d7dce0;
+			display: inline-block;
+			width: 3px;
+			height: 3px;
+			-webkit-border-radius: 50%;
+			border-radius: 50%;
+			vertical-align: top;
+			content: '';
+			margin: 0 5px 0 2px;
+			vertical-align: 3px;
+		}
+		.sub-area .join-link{
+			float: right;
+			color: #505050;
+		}
+		.join-link::before{
+			display: inline-block;
+			width: 11px;
+			height: 11px;
+			background-position: -401px -245px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+			margin: 2px 5px 0 0;
+		}
+
 		.blind{
 			position: absolute;
 			width: 1px; height: 1px;margin: -1px; overflow: hidden;
@@ -349,7 +594,10 @@
 		.img1::after, .icon-jrnaver.img1, .icon-happybean.img1,
 		.icon-search.img1,.icon-auto-complete.img1,.icon-kbd.img1,
 		.logo.img1, .icon-mail.img1, .icon-shop-live.img1, .icon-tv.img1,
-		.icon-shop.img1, .icon-btn-more.img1, .icon-media-arr.img1{
+		.icon-shop.img1, .icon-btn-more.img1, .icon-media-arr.img1,
+		.icon-login.img1, .img1.look-box::before, .img1.join-link::before,
+		.img1.news-stand::before, .img1.news-stand::after, .icon-list.img1,
+		.icon-tile.img1, .icon-set.img1{
 			background-image: url(../img/naver_img.png);
 			background-size: 442px 428px;
 		}
@@ -408,39 +656,39 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://section.cafe.naver.com/" class="nav">
 						<span class="text">카페</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://section.blog.naver.com/" class="nav">
 							<span class="text">블로그</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://kin.naver.com/" class="nav">
 							<span class="text">지식iN</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://shopping.naver.com/" class="nav">
 							<i class="icon-shop img1"></i>
 							<span class="blind">쇼핑</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://shoppinglive.naver.com/home" class="nav">
 							<span class="blind">쇼핑 라이브</span>
 							<i class="icon-shop-live img1"></i>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://order.pay.naver.com/home" class="nav">
 							<span class="text">Pay</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://tv.naver.com/" class="nav">
 							<i class="icon-tv img1"></i>
 						<span class="text">TV</span>
 						</a>
@@ -448,42 +696,42 @@
 				</ul>
 				<ul class="list-nav favorite-nav">
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://dict.naver.com/" class="nav">
 							<span class="text">사전</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://news.naver.com/" class="nav">
 							<span class="text">뉴스</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://finance.naver.com/" class="nav">
 							<span class="text">증권</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://land.naver.com/" class="nav">
 							<span class="text">부동산</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://map.naver.com/" class="nav">
 							<span class="text">지도</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://vibe.naver.com/?from=naver_main&utm_source=naver_main&utm_medium=naver_main_pcweb&utm_campaign=naver_main_redirect" class="nav">
 							<span class="text">VIBE</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://search.shopping.naver.com/book/home" class="nav">
 							<span class="text">도서</span>
 							</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://mail.naver.com/" class="nav">
+						<a href="https://comic.naver.com/" class="nav">
 							<span class="text">웹툰</span>
 							</a>
 					</li>
@@ -505,22 +753,184 @@
 					<h2 class="blind">뉴스 스탠드</h2>
 					<div class="news-header">
 						<div class="news-issue">
-							<a href="" class="link-media">
+							<a href="https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&sid1=001&sid2=140&oid=001&isYeonhapFlash=Y" class="link-media">
 								연합뉴스
 								<i class="icon-media-arr img1"></i>
 							</a>
-							<a href=""class="issue">
-								
-							</a>
+							<ul class="list-issue">
+								<li class="issue">
+									<a href="https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&sid1=001&sid2=140&oid=001&isYeonhapFlash=Y&aid=0013692636">
+										의대 정원 확대 논의 조만간 개시할 듯…"협의 시작시점 조율중"
+									</a>
+								</li>
+							</ul>
 						</div>
 						<div class="news-direct">
-	
+							<a href="http://news.naver.com/" class="link-news-home">뉴스홈</a>
+							<a href="http://entertain.naver.com/home" class="link-entertainment">연예</a>
+							<a href="http://sports.news.naver.com/" class="link-sports">스포츠</a>
+							<a href="http://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=101" class="link-economy">경제</a>
+						</div>
+					</div>
+					<div class="news-title">
+						<div class="news-title-inner">
+							<a href="http://newsstand.naver.com/" class="news-stand img1" target="_blank">뉴스스탠드</a>
+							<div class="news-sort">
+								<a href="" class="news-subs">구독한 언론사</a><a href="" class="news-all">전체언론사</a>
+							</div>
+							<div class="view-btns">
+								<a href="" class="btn-set">
+									<i class="icon-list img1"></i>
+								</a>
+								<a href="" class="btn-set">
+									<i class="icon-tile img1"></i>
+								</a>
+								<a href="https://newsstand.naver.com/config.html" class="btn-set">
+									<i class="icon-set img1"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="news-group">
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
+						</div>
+						<div class="thumb-box">
+							<a href="" class="thumb">
+								<img src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/030.png" alt="전자신문">
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="box-right">
-				
+				<div class="login-box">
+					<h2 class="blind">로그인</h2>
+					<p class="login-msg">네이버를 더 안전하고 편리하게 이용하세요</p>
+					<a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com" class="login-link">
+						<i class="icon-login img1"></i>
+						<p class="text">로그인</p>
+					</a>
+					<div class="sub-area">
+						<div class="look-box img1">
+							<a href="https://nid.naver.com/user/help.nhn?todo=idinquiry" class="look-link">아이디</a>
+							<a href="" class="look-link">비밀번호찾기</a>
+						</div>
+						<a href="https://nid.naver.com/nidreminder.form" class="join-link img1">회원가입</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<footer class="container-footer">
