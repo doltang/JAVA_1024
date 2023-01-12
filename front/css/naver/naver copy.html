@@ -254,6 +254,8 @@
 			width: 750px;
     	margin-top: 12px;
 		}
+		/* news-box (왼쪽 두번째) */
+		/* .news-box  .news-header */
 		.news-box .news-header{
 			display: flex;
 			justify-content: space-between;
@@ -335,6 +337,7 @@
 			margin: 0 4px 0 7px;
 			color: #202020;
 		}
+		/* .news-box  .news-title */
 		.news-box .news-title{
 			padding: 22px 0 16px;
 			height: 56px;
@@ -434,7 +437,7 @@
 		.btn-set:hover .icon-tile, .btn-set:hover .icon-set{
 			opacity: 1;
 		}
-		/* news group */
+		/* .news-box .news group */
 		.news-box .news-group {
 			position: relative;
 			height: 260px;
@@ -452,7 +455,7 @@
 			padding: 23px 0 22px;
 			text-align: center;		
 		}
-		/* popup */
+		/* .news-box .news group .popup */
 		.news-group .thumb-box:hover .popup-wrap{
 			display: inline-block;
 		}
@@ -492,13 +495,14 @@
 			position: relative;
 			border: 1px solid #9ba2a7;
 		}
-		.news-box .page-pre{
+		/* .news-box .news group .btns */
+		.page-pre{
 			top: 109px;
 			position: absolute;
 			left: -27px;
 			z-index: 10;
 		}
-		.news-box .page-pre .btn-pre{
+		.page-pre .btn-pre{
 			display: inline-block;
 			width: 44px;
 			height: 44px;
@@ -506,16 +510,16 @@
 			background-repeat: no-repeat;
 			vertical-align: top;
 		}
-		.news-box .page-pre .btn-pre:hover{
+		.page-pre .btn-pre:hover{
 			background-position: -46px -296px;
 		}
-		.news-box .page-next{
+		.page-next{
 			top: 109px;
 			position: absolute;
 			right: -13px;
 			z-index: 10;
 		}
-		.news-box .page-next .btn-next{
+		.page-next .btn-next{
 			display: inline-block;
 			width: 44px;
 			height: 44px;
@@ -523,9 +527,10 @@
 			background-repeat: no-repeat;
 			vertical-align: top;
 		}
-		.news-box .page-next .btn-next:hover{
+		.page-next .btn-next:hover{
 			background-position: 0px -296px;
 		}
+
 		/* frame group */
 		.thumb img{
 			height: 20px;
@@ -746,6 +751,12 @@
 			content: '';
 			margin: 7px 8px 6px;
 		}
+		.card-nav .btn-prev:hover{
+			background-color: #fafbfc;
+		}
+		.card-nav .btn-prev:hover.btn-prev:before{
+			background-position: -154px -327px;
+		}
 		.card-nav .btn-next:before{
 			display: inline-block;
 			width: 6px;
@@ -759,6 +770,254 @@
 		.card-nav .btn-next{
 			margin-left: -1px;
 		}
+		.card-nav .btn-next:hover{
+			background-color: #fafbfc;
+		}
+		.card-nav .btn-next:hover.btn-next:before{
+			background-position: -138px -327px;
+		}
+		.list-stock{
+			width: 400%;
+			height: 100%;
+		}
+		.list-stock .item-stock{
+			width: 25%;
+			height: 100%;
+			float: left;
+			overflow: hidden;
+			padding: 14px 0 13px 16px;
+		}
+		.list-stock .item-stock .stock-link{
+			display: block;
+			width: 100%;
+		}
+		.stock-link .news-badge{
+			float: left;
+			height: 18px;
+			padding: 0 7px;
+			margin-right: 8px;
+			border: 1px solid #202020;
+			-webkit-border-radius: 10px;
+			border-radius: 10px;
+			font-size: 11px;
+			line-height: 18px;
+			color: #202020;
+			font-weight: 700;
+			vertical-align: top;
+			font-style: normal;
+		}
+		.stock-link .news{
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			display: block;
+			font-size: 13px;
+			line-height: 20px;
+			color: #404040;
+		}
+
+		/* 오른쪽 두번째 광고 창 */
+		.ad-box2{
+			position: relative;
+			width: 350px;
+			height: 200px;
+			visibility: inherit;
+			border: 0px;
+			vertical-align: bottom;
+			position: absolute;
+			overflow: hidden;
+		}
+
+		/* theme-box (왼쪽 세번째 창) */
+		.theme-box{
+			padding: 35px 0 27px;
+			letter-spacing: -.25px;
+		}
+		.theme-box .theme-head{
+			position
+		}
+		.theme-box .theme-head .group-title{
+			overflow: hidden;
+   		padding-bottom: 17px;
+		}
+		.theme-head .group-title .title-area{
+			float: left;
+		}
+		.theme-head .group-title .info-area{
+			float: right;
+		}
+		.info-area .info{
+			color: grey;
+		}
+		.info-area .info .new{
+			color: #000;
+		}
+		.info-area .btn-set{
+			position: relative;
+			margin-left: 14px;
+    	color: #505050;
+		}
+		.info-area .btn-set:before{
+			display: inline-block;
+			width: 11px;
+			height: 11px;
+			background-position: -358px -310px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+			content: '';
+			margin-right: 4px;
+			vertical-align: -1px;
+			opacity: .7;
+		}
+		.info-area .btn-set:after{
+			position: absolute;
+			top: 2px;
+			left: -8px;
+			content: '';
+			width: 1px;
+			height: 12px;
+			background-color: #e4e8eb;
+		}
+		.theme-head .group-cate{
+			position: relative;
+		}
+		.group-cate .btn{
+			position: absolute;
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+		}
+		.group-cate .page-pre{
+			top: 6px;
+    	left: -23px;
+		}
+		.group-cate .page-pre .btn-pre:hover{
+			background-position: -170px -342px;
+		}
+		.group-cate .page-pre .btn-pre{
+			background-position: -128px -342px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+		}
+		.group-cate .page-next{
+			top: 6px;
+    	right: 20px;
+		}
+		.group-cate .page-next .btn-next{
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			background-position: -86px -342px;
+			background-repeat: no-repeat;
+			vertical-align: top;
+		}
+		.group-cate .page-next .btn-next:hover{
+			background-position: -44px -342px;
+		}
+		.theme-head .group-cate .list-cate{
+			display: flex;
+			justify-content: flex-start;
+			overflow: hidden;
+			position: relative;
+    	background-color: #fff;
+			white-space: nowrap;
+		}
+
+		.theme-head .group-cate .list-cate::before{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: '';
+			border: 1px solid #dae1e6;
+		}
+		.group-cate .list-cate .item-cate{
+			position: relative;
+			display: inline-block;
+			width: 93.75px;
+			z-index: 1;
+			vertical-align: top;
+			border-right: 1px solid #dae1e6;
+			box-sizing: border-box;
+		}
+		.group-cate .list-cate .item-cate .link-cate{
+			display: block;
+			width: 93.75px;
+			font-size: 13px;
+			line-height: 49px;
+			font-weight: 700;
+			text-align: center;
+			text-decoration: none;
+			color: #202020;
+			box-sizing: border-box;
+		}
+		.group-cate .list-cate .item-cate{
+    	color: #fff  !important;
+		}
+		.item-cate .link-cate.enter:hover{
+			color: #e65da0;
+		}
+		.item-cate .link-cate.sports:hover{
+			color: #0147b5;
+		}
+		.item-cate .link-cate.webtoon:hover{
+			color: #5de65d;
+		}
+		.item-cate .link-cate.fashion:hover{
+			color: #8449ca;
+		}
+		.item-cate .link-cate.recipy:hover{
+			color: #ebaa00;
+		}
+		.item-cate .link-cate.living:hover{
+			color: #c08d31;
+		}
+		.item-cate .link-cate.book:hover{
+			color: #42be6f;
+		}
+		.item-cate .link-cate.economy:hover{
+			color: #35ae5e;
+		}
+		.item-cate .link-cate.recomend:hover{
+			color: #5290ff;
+		}
+		.item-cate .link-cate.car:hover{
+			color: #4a94e1;
+		}
+
+		.item-cate .link-cate.enter[aria-selected=true]{
+			background-color: #e65da0;
+		}
+		.item-cate .link-cate.sports[aria-selected=true]{
+			background-color: #0147b5;
+		}
+		.item-cate .link-cate.webtoon[aria-selected=true]{
+			background-color: #5de65d;
+		}
+		.item-cate .link-cate.fashion[aria-selected=true]{
+			background-color: #8449ca;
+		}
+		.item-cate .link-cate.recipy[aria-selected=true]{
+			background-color: #ebaa00;
+			color: #fff
+		}
+		.item-cate .link-cate.living[aria-selected=true]{
+			background-color: #c08d31;
+		}
+		.item-cate .link-cate.book[aria-selected=true]{
+			background-color: #42be6f;
+		}
+		.item-cate .link-cate.economy[aria-selected=true]{
+			background-color: #35ae5e;
+		}
+		.item-cate .link-cate.recomend[aria-selected=true]{
+			background-color: #5290ff;
+		}
+		.item-cate .link-cate.car[aria-selected=true]{
+			background-color: #4a94e1;
+		}
+
 
 		.line{
 			position: absolute;
@@ -777,7 +1036,8 @@
 		.icon-shop.img1, .icon-btn-more.img1, .icon-media-arr.img1,
 		.icon-login.img1, .img1.look-box::before, .img1.join-link::before,
 		.img1.news-stand::before, .img1.news-stand::after, .icon-list.img1,
-		.icon-tile.img1, .icon-set.img1, .btn-pre.img1, .img1.btn-next:before, .img1.btn-prev::before{
+		.icon-tile.img1, .icon-set.img1, .btn-pre.img1, .btn-next.img1, .img1.btn-next:before, 
+		.img1.btn-prev::before, .img1.btn-set:before, .img1.btn-set:after{
 			background-image: url(../img/naver_img.png);
 			background-size: 442px 428px;
 		}
@@ -927,7 +1187,10 @@
 			<div class="box-left">
 				<div class="ad-box">
 					<iframe src="add1.html" frameborder="0" class="frame"></iframe>
-				
+					<span class="line line-top"></span>
+					<span class="line line-bottom"></span>
+					<span class="line line-left"></span>
+					<span class="line line-right"></span>
 				</div>
 				<div class="news-box">
 					<h2 class="blind">뉴스 스탠드</h2>
@@ -1116,6 +1379,64 @@
 						</div>
 					</div>
 				</div>
+				<div class="theme-box">
+					<h2 class="blind">주제별 캐스트</h2>
+					<div class="theme-head">
+						<div class="group-title">
+							<div class="title-area">
+								<strong class="title">오늘 읽을만한 글</strong>
+								<span class="dsc">주제별로 분류된 다양한 글 모음</span>
+							</div>
+							<div class="info-area">
+								<span class="info">
+									<strong class="new">678</strong>
+									개의 글
+								</span>
+								<a href="" class="btn-set img1">관심주제 설정</a>
+							</div>
+						</div>
+						<div class="group-cate">							
+							<a href="" class="page-pre">
+								<i class=" btn btn-pre img1"></i>
+							</a>
+							<a href="" class="page-next">
+								<i class="btn btn-next img1"></i>
+							</a>
+							<ul class="list-cate">
+								<li class="item-cate">
+									<a href="" class="link-cate enter">엔터</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate sports">스포츠</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate webtoon">웹툰</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate fashion">패션뷰티</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate recipy" aria-selected="true">레시피</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate living">리빙</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate book">책방</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate economy">경제</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate recomend">추천구독</a>
+								</li>
+								<li class="item-cate">
+									<a href="" class="link-cate car">자동차</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="box-right">
 				<div class="login-box">
@@ -1136,6 +1457,15 @@
 				<div class="timesquare-box">
 					<h2 class="blind">타임스퀘어</h2>
 					<div class="card-wrap">
+						<ul class="list-stock">
+							<li class="item-stock">
+								<a href="" class="stock-link">
+									<i class="news-badge">이슈</i>
+									<span class="news">코로나바이러스감염증-19 현황</span>
+								</a>
+							</li>
+							<li class="item-stock"></li>
+						</ul>
 						<div class="card-nav">
 							<a href="" class="btn-nav btn-prev img1">
 								
@@ -1147,6 +1477,11 @@
 						</div>
 					</div>
 				</div>
+				<iframe src="ad2.html" frameborder="0" class="ad-box2" width="350" height="200"></iframe>
+				<span class="line line-top"></span>
+				<span class="line line-bottom"></span>
+				<span class="line line-left"></span>
+				<span class="line line-right"></span>
 			</div>
 		</div>
 		<footer class="container-footer">
