@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	/* shop-box (오른쪽 세번째) */
+	*{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		overflow: hidden;
+		width: 350px;
+		background-color: #fff;
+		letter-spacing: -.25px;
+		margin: 0;
+		font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+	}
+	a{
+		text-decoration: none;
+	}
+	.icon-trend.img1, .img1.link-trend::after, .img1.btn-pre::before, .img1.btn-next::before{
+		background-image: url(../img/naver_img3.png);
+		background-size:  129px 101px;
+	}
+	.shop-header{
+		width: 350px;
+		display: flex;
+		justify-content: space-between;
+		padding: 12px 0 13px;
+		line-height: 17px;
+	}
+	.shop-header .link-shop{
+		float: left;
+		margin: 2px 0 0 1px;
+		font-size: 13px;
+		line-height: 17px;	
+	}
+	.link-shop .link-trend{
+		color: #000;
+		text-decoration: none;
+	}
+	.link-shop .link-trend:hover{
+		text-decoration: underline;
+	}
+	.link-shop .link-trend::after{
+		display: inline-block;
+    width: 5px;
+    height: 9px;
+    background-position: -109px -49px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    content: '';
+    margin-left: 7px;
+    vertical-align: 0;
+	}
+	.link-shop .link-trend .icon-trend{
+		display: inline-block;
+		width: 15px;
+		height: 15px;
+		background-position: -109px -22px;
+		background-repeat: no-repeat;
+		vertical-align: top;
+		content: '';
+		margin-right: 4px;
+		vertical-align: -3px;
+	}
+	.tab-titles{
+		float: right;
+    font-size: 13px;
+    font-weight: 700;
+		margin: 0;
+		padding: 0;
+	}
+	.tab-titles .tab-item{
+		float: left;
+		margin-left: 11px;
+	}
+	.tab-titles .tab-item .tab{
+		display: block;
+    padding: 0 1px;
+    border-bottom: 2px solid transparent;
+    color: #202020;
+    text-decoration: none;
+	}
+	.shop-body{
+		overflow: hidden;
+    height: 1763px;
+    border: 1px solid #e4e8eb;
+	}
+	.shop-body .group-mall{
+		overflow: hidden;
+    padding: 12px 4px 11px 16px;
+    background-color: #f7f9fa;
+    border-bottom: 1px solid #dae1e6;
+	}
+	.group-mall .mall-area .link-mall{
+		float: left;
+    line-height: 23px;
+    color: #404040;
+		text-decoration: none;
+		letter-spacing: -.25px;
+		white-space: nowrap;
+		line-height: 23px;
+	}
+	.mall-area::after{
+		content: "";
+    display: table;
+    table-layout: fixed;
+    clear: both;
+	}
+	.group-goods{
+		position: relative;
+    padding: 55px 8px 20px;
+		height: 884px;
+	}
+	.group-goods .shop-control{
+		position: absolute;
+		top: 13px;
+    right: 8px;
+		text-align: right;
+	}
+	.group-goods .shop-control .num-box{
+		float: left;
+    line-height: 29px;
+    color: grey;
+	}
+	.shop-control .num-box .current{
+		margin-right: 4px;
+    color: #202020;
+    font-weight: 700;
+		font-style: normal;
+	}
+	.btn-box{
+		overflow: hidden;
+    float: left;
+    margin-left: 7px;
+	}
+	.btn-box .btn{
+		float: left;
+    background-color: #fff;
+    border: 1px solid #dae1e6;
+	}
+	.btn-box .btn-pre::before{
+		display: inline-block;
+    width: 5px;
+    height: 9px;
+    background-position: -116px -60px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    content: '';
+    margin: 9px 12px 9px 10px;
+	}	
+	.btn-box .btn-next::before{
+		display: inline-block;
+    width: 5px;
+    height: 9px;
+    background-position: -109px -60px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    content: '';
+    margin: 9px 10px 9px 12px;
+	}
+	.circle{
+		float: left;
+		margin: 10px 10px 0;
+		background-color: #c9cccf;
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: top;
+	}
+	.blind{
+			position: absolute;
+			width: 1px; height: 1px;margin: -1px; overflow: hidden;
+	}
+
+	.list-goods-wrap{
+		overflow: hidden;
+	}
+	.list-goods{
+		overflow: hidden;
+		margin-top: -10px;
+		margin-right: -5px;
+	}
+	.list-goods .goods-item {
+		float: left;
+    width: 33.33%;
+		margin-top: 10px;
+	}
+	.list-goods .goods-item .thumb-box{
+		width: 107px;
+		height: 146px;
+		position: relative;
+		overflow: hidden;
+	}
+	.goods-item .thumb-border{
+		position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .08;
+    filter: alpha(opacity=8);
+    border: 1px solid #000;
+	}
+	.goods-item .title-box{
+		text-decoration: none;
+		margin-top: 5px;
+	}
+	.goods-item .title-box .title{
+		overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    line-height: 16px;
+    text-align: center;
+		color: #202020;
+		text-decoration: none;
+		font-style: normal;
+	}
+	.goods-item .title-box .title:first-child{
+		font-weight: 700;
+	}
+	.goods-item img{
+		width: 107px;
+		height: 146px;
+	}
+
+	.shop-page{
+		width: 200px;
+		height: 29px;
+		margin-top: 18px;
+		background-color: red;
+		text-align: center;
+	}
+	.shop-page .shop-control{
+		position: absolute;
+		top: 500px;
+	}
+	.clearfix::after{
+			clear: both;
+			display: block;
+			content: '';
+		}
+	
+</style>
+<body>
+	<div class="shop-container">
+		<div class="shop-header">
+			<h1 class="link-shop">
+				<a href="https://trenditem.shopping.naver.com" class="link-trend img1"> 
+					<i class="icon-trend img1"></i>트렌드쇼핑</a>
+			</h1>
+			<ul class="tab-titles ">
+				<li class="tab-item tab-product"><a href="" class="tab">상품</a></li>
+				<li class="tab-item tab-mall"><a href="" class="tab">쇼핑몰</a></li>
+				<li class="tab-item tab-men"><a href="" class="tab">MEN</a></li>
+			</ul>
+		</div>
+		<div class="shop-body">
+			<div class="group-mall">
+				<div class="blind">몰 바로가기</div>
+				<div class="mall-area">
+					<a class="link-mall" href="https://adcr.shopping.naver.com/adcr.nhn?x=ooEMCztd4AFyhdMl%2BbP5C%2F%2F%2F%2Fw%3D%3DsFw0VIo3Uq0T2g99kX1IKqULtr%2BURdpoE0S3sQ0%2BKTJJbmjM4NWG24l7CeZP6rWgirHOHKtNhMzIHibml6QlTTe8%2B9vLeOUFFKYt0axo7wt139QOdmHnGDJSEtDu1f3XVL0PV66ZutEhQzPLnS0MrRjBZTWtjjkuB3gJpqyNFVI2NpClmF0v7XhHc6jb3MPKeKQezOVzXmUA%2BQ94szWpSduKwQ75kpu2nU63nNn%2BR4Pr9%2BKC4Dm4Tu7GHftnFZjIkqV5yjR6VmDAnICkm03wxeXVVvVfMqaMPoh1quxqhy3Rad%2FSzq%2Bq4TAH6Q0jo1CHViS572TC3D7o%2FA5qQ2pRKL00yaVSmakmsFiX2QRaGGoIc243%2FKwZwRZ7mxCPb9bCRNH5Zby0i410b%2BXjXbW%2F%2B0w%3D%3D&y=HlSpC4BRnXB9YAxJxXWFiP%2F%2F%2Fw%3D%3Dsfu%2FtfZ7ZTA1V4a0bati0cPUvK504LwzRNKNgcxqHPknEzoCL6e%2FvvhBA3ot%2B5u0nX%2FgPSU1MLNpTzpKcek%2B86WsLCxqZt%2BzXo913dQqFbnU%2BvWEgG44Drhaq9sp%2BzpZXSWf8vWuAPukAKdNCAoDAmPZi2p3qXNSmQPjDm0dqzWLYR0Xb34HF5lYvoK0ygB8oFIistA4FGBzC6HKdgH6Jo0PHHgWhG4sS8cuWvFUiru23FIdR%2F6Njjwk7xW3NpwJOsm8%2FECiEpfAvwOfwZzqLmHH%2F5btfmJqfn%2FugCCrOkaEZy2Nnb7oOgoJX1d7%2B3m41RsoQnHES14ONfjVNKj3SekXeN6k4lyOc2D%2FmSXv5jrYNX31GFeR3Zlop1S3jCtaTbD0awtDIUu46dQRZjctP5Q8My1uTQUGXaFw7S7bV7T4VhudUPeRJvlX0kAnU%2BxpxU9tP9Kh1wGB7Lzy9qc1KCoqpmwkU%2BBQ53ZRmRgImtEl%2FTdDI4VKx6Bh8XgTVzfSOtBHjrSvGgokRxMTxH2adlECYEU2Smz1Ei09izJ%2BW1aZdSWZj4aHpcrUXF0BVcm0wRluwj3vaIbrbSBQYjELKMl5yRoVG7tZvVmrZOAgBk50%3D">쿠팡</a><span class="circle"></span>
+					<a class="link-mall" href="" ><strong>G마켓</strong></a><span class="circle"></span>
+					<a class="link-mall" href="" >옥션</a><span class="circle"></span>
+					<a class="link-mall" href="" >11번가</a><span class="circle"></span>
+					<a class="link-mall" href="" ><strong>SSG닷컴</strong></a><span class="circle"></span>
+					<a class="link-mall" href="" >티몬</a>
+				</div>
+				<div class="mall-area">
+				<a class="link-mall" href="" ><strong>올리브영</strong></a><span class="circle"></span>
+				<a class="link-mall" href="" >위메프</a><span class="circle"></span>
+				<a class="link-mall" href="" ><strong>GS샵</strong></a><span class="circle"></span>
+				<a class="link-mall" href="" >CJ온스타일</a><span class="circle"></span>
+				<a class="link-mall" href="" >패션플러스</a>
+				</div>
+			</div>
+			<div class="group-goods">
+				<div class="shop-control">
+					<div class="num-box">
+						<em class="current">
+							<span class="blind">현재</span>1</em><sapn class="blind">전체</sapn>/ 18
+					</div>
+					<div class="btn-box">
+						<a href="" class="btn btn-pre img1"><span class="blind">이전</span></a>
+						<a href="" class="btn btn-next img1"><span class="blind">다음</span></a>
+					</div>
+				</div>
+				<div class="list-goods-wrapp">
+					<ul class="list-goods clearfix">
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img class="thumb-img"src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+						<li class="goods-item">
+							<a href="" class="goods-area" target="_blank">
+								<div class="thumb-box">
+									<img src="https://s.pstatic.net/shopping.phinf/20230109_27/3e37600b-e32b-4dfe-b535-c0bf3cbd2545.jpg?type=f214_292" alt="">
+									<span class="thumb-border"></span>
+								</div>
+								<p class="title-box">
+									<span class="title">장민호픽간장게장</span>
+									<span class="title">명절선물로좋아요</span>
+								</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="shop-page">
+					<div class="shop-control">
+						<a href="" class="btn btn-pre img1"><span class="blind">이전</span></a>
+						<div class="num-box">
+							<em class="current">
+								<span class="blind">현재</span>1</em><sapn class="blind">전체</sapn>/ 18
+						</div>
+						<a href="" class="btn btn-next img1"><span class="blind">다음</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

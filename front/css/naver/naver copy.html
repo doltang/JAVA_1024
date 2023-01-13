@@ -827,14 +827,16 @@
 			position: absolute;
 			overflow: hidden;
 		}
+		.ad-box2::after{
+			clear: both;
+			display: block;
+			content: '';
+		}
 
 		/* theme-box (왼쪽 세번째 창) */
 		.theme-box{
 			padding: 35px 0 27px;
 			letter-spacing: -.25px;
-		}
-		.theme-box .theme-head{
-			position
 		}
 		.theme-box .theme-head .group-title{
 			overflow: hidden;
@@ -1017,8 +1019,13 @@
 		.item-cate .link-cate.car[aria-selected=true]{
 			background-color: #4a94e1;
 		}
-
-
+		/* shop-box */
+		.shop-box{
+			width: 350px;
+			height: 1000px;
+    	margin-top: 215px;
+		}
+		
 		.line{
 			position: absolute;
 			background-color: #e4e8eb;
@@ -1037,7 +1044,8 @@
 		.icon-login.img1, .img1.look-box::before, .img1.join-link::before,
 		.img1.news-stand::before, .img1.news-stand::after, .icon-list.img1,
 		.icon-tile.img1, .icon-set.img1, .btn-pre.img1, .btn-next.img1, .img1.btn-next:before, 
-		.img1.btn-prev::before, .img1.btn-set:before, .img1.btn-set:after{
+		.img1.btn-prev::before, .img1.btn-set::before, .img1.btn-set::after,
+		.img1.link-trend::before{
 			background-image: url(../img/naver_img.png);
 			background-size: 442px 428px;
 		}
@@ -1478,10 +1486,7 @@
 					</div>
 				</div>
 				<iframe src="ad2.html" frameborder="0" class="ad-box2" width="350" height="200"></iframe>
-				<span class="line line-top"></span>
-				<span class="line line-bottom"></span>
-				<span class="line line-left"></span>
-				<span class="line line-right"></span>
+				<iframe src="shop.html" frameborder="0" class="shop-box"></iframe>
 			</div>
 		</div>
 		<footer class="container-footer">
