@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Type</title>
+</head>
+<body>
+	<script>
+		let num1 = 10;
+		console.log(typeof num1);
+		let str = '10.123';
+		console.log(typeof str);
+		let str2 = new String('10.123'); //object 생성자를 이용해서 만듦
+		console.log(typeof str2);
+		let num2;
+		console.log(typeof num2); //undefined
+		let obj = null;//object
+		console.log(typeof obj);
+		console.log(num2 / 2); // nan
+		console.log(typeof(num2/2)); // number
+		let isEven = true;
+		console.log(typeof isEven); //boolean
+	</script>
+</body>
+</html>
