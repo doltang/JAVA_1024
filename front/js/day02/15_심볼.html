@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let obj1 = {
+			id : 'abc'
+		}
+		let obj2 = {
+			id : 'abc'
+		}
+		console.log(obj1.id == obj2.id);
+		let id1 = Symbol('id');
+		let id2 = Symbol('id');
+		let obj3 = {
+			id1 : 'abc'
+		}
+		let obj4 = {
+			id2 : 'abc'
+		}
+		console.log(`id1 == id2 : ${id1 == id2}`);
+		console.log(`id1 == id2 : ${id1 == id2}`);
+	</script>
+</body>
+</html>

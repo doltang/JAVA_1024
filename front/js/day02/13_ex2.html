@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex2</title>
+</head>
+<body>
+	<script>
+		/* 
+		알림창으로 아이디, 비번을 입력받아 회원 객체 생성,
+		회원 객체의 아이디, 비번을 콘솔에 출력하는 코드*/
+		/*
+		let user = {
+			id : prompt('아이디를 입력하세요', 'abc'),
+			pw : prompt('비번을 입력하세요', 'qwe')
+		}
+		console.log(user);
+		*/
+
+		// 생성자 함수를 활용
+		function User(id, pw){
+			this.id = id;
+			this.pw = pw;
+			this.print = function(){
+				console.log(`ID : ${this.id}, PW : ${this.pw}`);
+			}
+		}
+		let id = prompt('아이디를 입력하세요');
+		let pw = prompt('비번을 입력하세요');
+		let user = new User(id, pw);
+		user.print();
+
+		// 한번만 사용할 때
+		let user2 = {
+			id,pw,
+			print(){
+				console.log(`ID : ${this.id}, PW : ${this.pw}`);
+			}
+		}
+		user2.print();
+	</script>
+</body>
+</html>
