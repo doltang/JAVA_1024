@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>부모 탐색</title>
+</head>
+<body>
+	<div>hello</div>
+	<a href="#">link</a>
+	<ul>
+		<li>apple</li>
+		<li>grapes</li>
+	</ul>
+
+	<script>
+		/*
+		nextElementSibling : 다음 형제 요소를 선택
+		previousElementSibling : 이전 형제 요소를 선택
+		parentElement : 부모 요소를 선택
+
+		nextSibling : 다음 형제 노드를 선택
+		previousSibling : 이전 형제 노드를 선택
+		parentNode : 부모 노드를 선택
+		*/
+		// body태그의 첫번쨰 자식 요소 탐색
+		let div = document.body.firstElementChild;
+		// 첫번째 자식 요소의 부모 요소 탐색
+		let body = div.parentElement;
+		// 첫번째 자식 요소의 다음 형제 요소 탐색(2번째 자식 요소)
+		let a = div.nextElementSibling;
+		// 두번쨰 자식 요소의 이전 형제 요소 탐색(첫번쨰 자식 요소)
+		let prevElementByA = a.previousElementSibling;
+		console.log(div);
+		console.log(body);
+		console.log(a);
+		console.log(prevElementByA);
+		console.log('==========================');
+
+		// body 태그의 첫번째 자식 노드 탐색
+		let firstChild = document.body.firstChild;
+		console.log(firstChild);
+		// 첫번째 자식 노드의 부모 노드 탐색
+		let parent = firstChild.parentNode;
+		// 첫번째 자식 노드의 다음 형제 노드 탐색
+		let nextByFirst = firstChild.nextSibling;
+		// 두번째 자식 노드의 이전 형제 노드 탐색
+		let prevBySecond = nextByFirst.nextSibling;
+		console.log(parent);
+		console.log(prevByFirst);
+		console.log(nextByFirst);
+		console.log(prevBySecond);
+	</script>
+</body>
+</html>

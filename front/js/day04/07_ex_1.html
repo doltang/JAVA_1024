@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="num1">
+	+
+	<input type="text" name="num2">
+	=
+	<input type="text" name="res" readonly>
+	<br>
+	<button onclick="sum()">계산</button>
+	
+	<script>
+		function sum(){
+			// 첫번쨰 input값과 두번쨰 input값을 
+			// 읽어와서 더한 결과를
+			// 세번쨰 input 값에 넣어주는 작업을 작성
+			/*
+			[0]을 써줘야 하는 이유 
+				- getElementsByName은 요소들을 컬렉션으로 반환
+				=> 여러 개로 묶어서 보내줌. 요소가 1개여도 묶어서 보냄
+				- querySelector는 최대 1개를 반환
+				- quertSelectorAll은 여러 개 올수 있기 때문에 컬렉션으로 반환 => [번지]를 이용
+			*/
+			let num1 = document.getElementsByName('num1')[0].value;
+			num1 = document.body.firstElementChild.value;
+			num1 = document.querySelector('[name=num1]').value;
+			num1 = document.querySelectorAll('[name=num1]')[0].value;
+			let num2 = document.body.firstElementChild.nextElementSibling.value;
+			
+			let res = document.getElementsByName('res')[0].value;
+			res = +num1 + +num2;
+			console.log(res);
+			document.querySelector('[name=res]').value = res;
+			
+		}
+	</script>
+</body>
+</html>

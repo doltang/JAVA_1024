@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex2</title>
+</head>
+<body>
+	<ul>
+		<li>5</li>
+		<li>4</li>
+		<li>3</li>
+		<li>2</li>
+		<li>1</li>
+	</ul>
+
+	<script>
+		// 12345순이 되도록 스크립트를 코드로 작성
+		let liTags = document.querySelectorAll('li');
+		let count = 0;
+		for(liTag of liTags){
+			liTag.textContent = ++count;
+		}
+		// 3번쨰 li태그 요소를 선택해서 텍스트를 콘솔에 출력
+		let num3 = document.getElementsByTagName('li')[2].textContent;
+		console.log(num3);
+		console.log(document.querySelector('li:nth-child(3)').textContent);
+
+		// let num1 = document.getElementsByTagName('li')[4].textContent;
+		// let num2 = document.getElementsByTagName('li')[3].textContent;
+		// let num3 = document.getElementsByTagName('li')[2].textContent;
+		// let num4 = document.getElementsByTagName('li')[1].textContent;
+		// let num5 = document.getElementsByTagName('li')[0].textContent;
+		// console.log(num1);
+		// console.log(num2);
+		// console.log(num3);
+		// console.log(num4);
+		// console.log(num5);
+		// document.getElementsByTagName('li')[0].innerHTML = num1;
+		// document.getElementsByTagName('li')[1].innerHTML = num2;
+		// document.getElementsByTagName('li')[2].innerHTML = num3;
+		// document.getElementsByTagName('li')[3].innerHTML = num4;
+		// document.getElementsByTagName('li')[4].innerHTML = num5;
+	</script>
+</body>
+</html>
