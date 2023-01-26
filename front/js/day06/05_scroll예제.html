@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>scroll</title>
+	<style>
+		.btn{
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-color: yellow;
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" style="height: 1000px;"></div>
+	<a href="#" class="btn"></a>
+	<script>
+		/*
+		pageYOffset, pageXOffset : 브라우저 상관없이 스크롤의위치를 구함
+		scrollTo
+		scrollBy
+		*/
+		function example(event){
+			event.preventDefault();
+			alert(`scrollTop : ${document.scrollTop}`)
+		}
+	</script>
+</body>
+</html>

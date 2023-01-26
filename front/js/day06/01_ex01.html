@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ex01</title>
+	<style>
+		.pagenation::after{
+			content: '';
+			clear: both;
+			display: block;
+		}
+		.btn-pre, .btn-next{
+			width: 30px;
+			height: 30px;
+			border: 1px solid black;
+			line-height: 30px;
+			text-align: center;
+			text-decoration: none;
+			color: black;
+			float: left;
+		}
+		.box-page{
+			float: left;
+			line-height: 32px;
+			margin: 0 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="pagenation">
+		<a href="#" class="btn-pre" onclick="movePage('pre')">&lt;</a>
+		<div class="box-page">
+			<span data-page="1" class="page">1</span>
+			<span>/</span>
+			<span data-max="6" class="max-page">6</span>
+		</div>
+		<a href="#" class="btn-next" onclick="movePage('next')">&gt;</a>
+	</div>
+	<script>
+		function movePage(state){
+			let page = document.querySelector('.page').dataset.page;
+			let maxPage = document.querySelector('.max-page').dataset.max;
+			page = +page;
+			maxPage = +maxPage;
+
+			if(state == 'next')
+				++page;
+			else
+				--page;
+			
+			page = page == 0 ? maxPage : (page > maxPage ? 1 : page);
+			
+			/*
+			위에 식을 풀어서 표현하면..
+			if(page == 0)
+				pafe = maxPage;
+			if(page > maxPage)
+				page = 1;
+			*/
+			document.querySelector('.page').dataset.page = page;
+			document.querySelector('.page').textContent = page;
+		}
+	</script>
+	<!--  
+	<script>
+		let btnPre = document.querySelector('.btn-pre');
+		let btnNext = document.querySelector('.btn-next');
+		btnPre.onclick = ()=>{
+			let page = document.querySelector('.page').dataset.page;
+			let maxPage = document.querySelector('.max-page').dataset.max;
+			page = +page;
+			maxPage = +maxPage;
+			/* --page;
+			if(page == 0){
+				page = 6;
+			}
+			*/
+			page = --page == 0 ? 6 : page;
+			document.querySelector('.page').dataset.page = page;
+			document.querySelector('.page').textContent = page;
+		}
+
+		btnNext.onclick = ()=>{
+			let page = document.querySelector('.page').dataset.page;
+			let maxPage = document.querySelector('.max-page').dataset.max;
+			page = +page;
+			maxPage = +maxPage;
+			/* --page;
+			if(page == 0){A
+				page = 6;
+			}
+			*/
+			page = ++page > maxPage ? 1 : page;
+			document.querySelector('.page').dataset.page = page;
+			document.querySelector('.page').textContent = page;
+		}
+	</script>
+	-->
+</body>
+</html>
