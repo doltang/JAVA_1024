@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			position: relative;
+			width: 200px;
+			height: 50px;
+			border: 1px solid black;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<!-- 
+		버튼과 박스를 배치하고, 버튼을 클릭하면 박스가 아래로 100px 천천히 내려가도록 코드를 작성
+	 -->
+	<button class="btn">클릭</button>
+	<div class="box"></div>
+	<script>
+		$('.btn').click(function(){
+			//$('.box').animate({top: '100px'}, 'slow')
+			$('.box').animate({
+				top: '+=100px'
+			}, 1000)
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<!-- 1. 버튼을 배치하고, 버튼을 클릭했을 때 alert('hello')가 뜨도록 코드를 작성
+			 2. 버튼 안에 있는 글자가 alert로 뜨도록 코드를 작성 -->
+	<button class="btn">인사합니다</button>
+	<script>
+		/*
+		//$(button)
+		$('.btn').click(()=>{
+			alert('hello')
+		});
+		*/
+		/*
+		- text() : 요소 안의 글자를 가져옴(자손 포함). 대부분 태그에 적용 가능. 단, 단일 태그는 제외
+		-	html() : 요소 안의 html 코드를 가져옴(자손 포함). 단, 단일 태그는 제외
+		- val() : 요소 안의 value를 가져옴. input태그, select 태그, textarea태그
+		*/
+		$('.btn').click(function(){
+			let text = $(this).text();
+			alert(text);
+		})
+	</script>
+</body>
+</html>
