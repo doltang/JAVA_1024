@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul{
+			list-style: none;
+		}
+		.outer-box{
+			position: relative;
+			margin-top: 100px;
+			width: 300px;
+			height: 30px;
+			border: 3px solid #000;
+			/* overflow: hidden; */
+			box-sizing: border-box;
+		}
+		.inner-box-container{
+			width: 1475px;
+			position: relative;
+			display: flex;
+		}
+		.inner-box-container::after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.inner-box{
+			width:	20%;
+			height: 25px;
+			border: 2px solid red;
+			background-color: pink;
+			box-sizing: border-box;
+			opacity: .5;
+			float: left;
+		}
+		.btn-container{
+			position: absolute;
+			top: 0;
+			margin-left: 255px;
+			z-index: 10;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="outer-box">
+		<ul class="inner-box-container">
+			<li class="inner-box"><a href="#">1</a></li>
+			<li class="inner-box"><a href="#">2</a></li>
+			<li class="inner-box"><a href="#">3</a></li>
+			<li class="inner-box"><a href="#">4</a></li>
+			<li class="inner-box"><a href="#">5</a></li>
+		</ul>
+		<div class="btn-container">
+			<button class="left">&lt;</button>
+			<button class="right">&gt;</button>
+		</div>
+	</div>
+	<script>
+		$('.right').click(function(){
+			let width = $('.inner-box').innerWidth();
+			if(!$('.inner-box').first().is(':animated')){
+				$('.inner-box').first().animate({
+					marginLeft : `-${width}px`
+				}, 1000, function(){
+					$(this).detach().appendTo('.inner-box-container').removeAttr('style');
+				});
+		}
+		});
+
+		$('.left').click(function(){
+			let width = $('.inner-box').innerWidth();
+				$('.inner-box').first().animate({
+					marginright : `-${width}px`
+				}, 900, function(){
+					$(this).detach().appendTo('.inner-box-container').removeAttr('style');
+				});
+		})
+	</script>
+</body>
+</html>

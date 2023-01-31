@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 300px;
+			height: 300px;
+			border: 1px solid black;
+			padding: 30px;
+			background: pink;
+			margin-bottom: 30px;
+		}
+		.in-box{
+			background-color: red;
+			padding: 20px;
+			height: 100%;
+			box-sizing: border-box;
+			color: #fff;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1">
+		<div class="in-box">
+			in : <span class="in-num">0</span> <br>
+			out : <span class="out-num">0</span> <br>
+		</div>
+	</div>
+
+	<div class="box box2">
+		<div class="in-box">
+			in : <span class="in-num">0</span> <br>
+			out : <span class="out-num">0</span> <br>
+		</div>
+	</div>
+	<script>
+		/*
+		- mouseover, mouseout 이벤트
+			- 자식 요소로 이동하면 이벤트가 다시 발생
+		- mouseenter, mouseleave 이벤트
+			- 자식 요소로 이동해도 이벤트가 다시 발생하지 않음
+		- hover는 mouseenter - mouseleave를 합친 이벤트
+		*/
+		let inNum1 = 0;
+		let outNum1 = 0;
+		let num2 = 1;
+		$('.box1').mouseover(function(){
+			++inNum1;
+			$(this).find('.in-num').text(inNum1);
+		})
+	</script>
+</body>
+</html>

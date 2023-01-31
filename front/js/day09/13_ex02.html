@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul{
+			list-style: none;
+		}
+		.container{
+			height: 50px;
+			margin-top: 30px;
+			border: 3px solid black;
+		}
+		.outer-box{
+			margin-top: 100px;
+			width: 300px;
+			height: 30px;
+			border: 3px solid #000;
+			/* overflow: hidden; */
+			box-sizing: border-box;
+		}
+		.inner-box-container{
+			width: 1475px;
+			position: relative;
+			display: flex;
+		}
+		.inner-box-container::after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.inner-box{
+			width:	20%;
+			height: 25px;
+			border: 2px solid red;
+			background-color: pink;
+			box-sizing: border-box;
+			opacity: .5;
+			float: left;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="outer-box">
+		<ul class="inner-box-container">
+			<li class="inner-box"><a href="#">1</a></li>
+			<li class="inner-box"><a href="#">2</a></li>
+			<li class="inner-box"><a href="#">3</a></li>
+			<li class="inner-box"><a href="#">4</a></li>
+			<li class="inner-box"><a href="#">5</a></li>
+		</ul>
+	</div>
+	<script>
+		let id = rolling();
+
+		// hover 이벤트를 등록
+		$('.outer-box').hover(function(){
+				// 마우스가 요소 안으로 들어오면
+				// 애니메이션이 진행중인 setInterval를 해제 => clearInterval
+				clearInterval(id);
+			}, function(){
+				// 마우스가 요소를 빠져나가면
+				// setInterval를 통해 애니매이션이 진행되도록 작업
+				id = rolling();
+			})
+			function rolling(){
+				return setInterval(function(){
+					if(!$('.inner-box').first().is(':animated')){
+						let width = $('.inner-box').innerWidth();
+						$('.inner-box').first().animate({
+							marginLeft : `-${width}px`
+						}, 900, function(){
+							$(this).detach().appendTo('.inner-box-container').removeAttr('style');
+						});
+						/*
+						$('.inner-box').first().animate({
+							marginLeft: '-=295px',				
+						}, 900, function(){
+							$(this).detach().appendTo('.inner-box-container').removeAttr('style');
+						})
+						*/
+					}
+				}, 2000);
+			}
+	</script>
+</body>
+</html>

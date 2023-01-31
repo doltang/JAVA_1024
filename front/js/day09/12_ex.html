@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul{
+			list-style: none;
+		}
+		.container{
+			height: 50px;
+			margin-top: 30px;
+			border: 3px solid black;
+		}
+		.outer-box{
+			margin-top: 100px;
+			width: 300px;
+			height: 30px;
+			border: 3px solid #000;
+			/* overflow: hidden; */
+			box-sizing: border-box;
+		}
+		.inner-box-container{
+			position: relative;
+		}
+		.inner-box{
+			width:	295px;
+			height: 25px;
+			border: 2px solid red;
+			background-color: pink;
+			box-sizing: border-box;
+			opacity: .5;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="outer-box">
+		<ul class="inner-box-container">
+			<li class="inner-box"><a href="#">1</a></li>
+			<li class="inner-box"><a href="#">2</a></li>
+			<li class="inner-box"><a href="#">3</a></li>
+			<li class="inner-box"><a href="#">4</a></li>
+			<li class="inner-box"><a href="#">5</a></li>
+		</ul>
+	</div>
+	<script>
+		/*
+		setInterval()
+		animate()
+		*/
+		setInterval(function(){
+			if(!$('.item-news').first().is(':animated')){
+				$('.inner-box').first().animate({
+					marginTop: '-=25px',				
+				}, 900, function(){
+					// 첫번째 요소를 떼서 ul태그 자식 요소 끝 다음에 추가	후 style 제거
+					// detach()
+					$(this).detach().appendTo('.inner-box-container').removeAttr('style');
+				})
+			}
+		}, 1000);
+	</script>
+</body>
+</html>
