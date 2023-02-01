@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>NAVER</title>
+	<script src="../jquery.min.js"></script>
+	<script src="naver.js"></script>
 	<style>
 		* { margin: 0; padding: 0;}
 		ul,ol{ list-style: none;}
@@ -118,6 +120,7 @@
 			top: 3.5%;
 			margin: 20px;
 		}
+
 		.box-logo .logo{
 			display: inline-block;
 			width: 222px;
@@ -1472,11 +1475,21 @@
 									<span class="news">코로나바이러스감염증-19 현황</span>
 								</a>
 							</li>
-							<li class="item-stock"></li>
+							<li class="item-stock">
+								<i class="news-badge">이슈</i>
+								<span class="news">백두산 천지 폭발</span>
+							</li>
+							<li class="item-stock">
+								<i class="news-badge">이슈</i>
+								<span class="news">북한에서 핵미사일 발사해..</span>
+							</li>
+							<li class="item-stock">
+								<i class="news-badge">이슈</i>
+								<span class="news">충격실화! 어제먹은 치킨이 소화안돼..</span>
+							</li>
 						</ul>
 						<div class="card-nav">
-							<a href="" class="btn-nav btn-prev img1">
-								
+							<a href="" class="btn-nav btn-prev img1">								
 								<span class="blind">이전</span>
 							</a>
 							<a href="" class="btn-nav btn-next img1">
@@ -1507,5 +1520,49 @@
 			</div>
 		</footer>
 	</div>
+	<script src="../jquery.min.js"></script>
+	<script>
+		let id = rolling();
+
+		$('.timesquare-box').hover(function(){
+				clearInterval(id);
+			}, function(){
+				id = rolling();
+			})
+			function rolling(){
+				return setInterval(function(){
+					if(!$('.item-stock').first().is(':animated')){
+						let width = $('.item-stock').innerWidth();
+						$('.item-stock').first().animate({
+							marginLeft : `-${width}px`
+						}, 900, function(){
+							$(this).detach().appendTo('.list-stock').removeAttr('style');
+						});
+					}
+				}, 2000);
+			}
+
+		// 버튼 클릭시 이동
+		$('.btn-next').click(function(){
+			let width = $('.item-stock').innerWidth();
+			if(!$('.item-stock').first().is(':animated')){
+				$('.item-stock').first().animate({
+					marginLeft : `-${width}px`
+				}, 1000, function(){
+					$(this).detach().appendTo('.list-stock').removeAttr('style');
+				});
+		}
+		});
+		//이전 버튼 클릭 이벤트를 등록
+		$('btn-prev').click(function(){
+			let width = $('.item-stock').first().innerWidth();
+			if(!$('.item-stock').first().is(':animated')){
+				$('.item-stock').last().detach().prependTo('.list-stock')
+				.css('marginLeft', `-${width}px`).animate({
+					marginLeft : 0
+				}, 1000);
+			}
+		})
+	</script>
 </body>
 </html>
