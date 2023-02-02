@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Join</title>
+	<style>
+		.form{
+			width: 200px;
+			margin: 0 auto;
+			box-sizing: border-box;
+		}
+		fieldset{
+			padding: 20px;
+		}
+		.container{
+			width: 100%;
+			display: flex;
+			flex-flow: column;
+			gap: 10px;
+			box-sizing: border-box;
+		}
+		[name=id],[name=pw],[name=pw2]{
+				display: block;
+				height: 20px;
+				border-radius: 10px;
+				border: 1px solid black;
+				line-height: 40px;
+				padding: 15px;
+				box-sizing: border-box;
+		}
+		.gender-box{
+			display: flex;
+			gap: 10px;
+		}
+		[id$=error]{
+			color: red;
+			display: block;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquert.validate.min.js"></script>
+	<script src="../js/jquery.additional-method.js"></script>
+</head>
+<body>
+	<form action="" class="form">
+		<fieldset>
+			<legend>회원가입</legend>
+			<div class="container">
+				<input type="text" name="id" placeholder="아이디">
+				<label for="id" class="error" id="id-error
+				"></label>
+				<input type="password" name="pw" placeholder="비밀번호" id="pw">
+				<label for="pw" class="error" id=""></label>
+				<input type="password" name="pw2" placeholder="비밀번호 확인">
+				<label for="pw2" class="error" id=""></label>
+				<div class="gender-box">
+					<label><input type="radio" name="gender" value="male">남성</label>
+					<label><input type="radio" name="gender" value="female">여성</label>
+				</div>
+				<input type="submit" value="회원가입">
+			</div>
+		</fieldset>
+	</form>
+	<script>
+		$(function(){
+			/*
+				$('form').validate({
+					// rules는 요소를 검사할 규칙
+					rules : {
+						// name에 넣어야 하는 값들은 input태그에 name의 값
+						id : {
+							required : '필수항목, true',
+							minlength : '최소길이, 숫자',
+							maxlength : '최대길이 , 숫자',
+							regex : '정규표현식',
+							equalTo : 'id값, 두 값을 비교할 때 사용',
+							digits : '숫자만',
+							email : '이메일 형식',
+							url : 'url 형식'
+						}
+					},
+					// messages는 rules에서 일치하지 않은 경우 보여줄 메세지
+					messages : {
+						id : {
+							required : '필수항목인데 입력하지 않았을 때 보여줄 메세지',
+							minlength : '최소길이가 맞지 않았을 때 보여줄 메세지',
+							maxlength : '최대길이가 일치하지 않을때 메세지',
+							regex : '정규표현식에 맞지 않을 때 메세지',
+							equalTo : '지정된 값과 같지 않을 떄 메세지',
+							digits : '숫자만으로 이뤄지지 않을 떄 메세지',
+							email : '이메일 형식이 아닐 떄 메세지',
+							url : 'url 형식이 아닐 떄 메세지'
+						}
+					}
+				});
+				$().animate({
+					marginLeft : '100px'
+				})
+				*/
+    $("form").validate({
+        rules: {
+            id: {
+                required : true,
+                minlength : 5,
+								maxlength : 13,
+								regex : /^[a-zA-Z0-9]{5,13}$/
+            },
+            pw: {
+                required : true,
+                regex: /^[a-zA-Z0-9!@#$%]{8,20}$/
+            },
+            pw2: {
+                equalTo : pw
+            },
+            gender: {
+                required : true
+            }
+        },
+        //규칙체크 실패시 출력될 메시지
+        messages : {
+            id: {
+                required : "필수 항목입니다.",
+                regex : "아이디는 5~13자, 영문, 숫자만 가능합니다."
+            },
+            pw: {
+                required : "필수 항목입니다.",
+                regex : "비번은 8~20자, 영문, 숫자, !@#$%만 가능합니다."
+            },
+            pw2: {
+                equalTo : "비밀번호와 비밀번호 확인이 일치하지 않습니다."
+            },
+            gender: {
+                required : "필수 항목입니다."
+            },
+        },
+				submitHandler : function (form){
+					alert(' 전송 전 마지막 확인');
+					return false;
+
+				}
+    });
+})
+$.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+        var re = new RegExp(regexp);
+        return this.optional(element) || re.test(value);
+    },
+    "Please check your input."
+);
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.window{
+			position: fixed;
+			display: none;
+			right: 10px;
+			width: 200px;
+			height: 400px;
+			border: 1px solid red;
+			padding: 6px;
+		}
+		.window .btn-close{
+			position: absolute;
+			right: 6px;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquert.validate.min.js"></script>
+	<script src="../js/jquery.additional-method.js"></script>
+</head>
+<body>
+	<button class="btn">클릭</button>
+	<div class="window">
+		<button class="btn-close">&times;</button>
+	</div>
+	<script>
+		$('.btn').click(function(){
+			$('.window').show();
+		})
+		$('.btn-close').click(function(){
+			$('.window').hide();
+		})
+	</script>
+</body>
+</html>

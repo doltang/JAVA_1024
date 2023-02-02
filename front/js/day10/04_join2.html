@@ -80,7 +80,7 @@
 			}
 			let pwRegex = /^[a-zA-Z0-9!@#$%]{8,20}$/;
 			if(!pwRegex.text(pw)){
-				alert('아이디는 5~13자, 영문, 숫자만 가능합니다.');
+				alert('비번은 5~13자, 영문, 숫자만 가능합니다.');
 				$('[name=pw]').focus();
 				return false;
 			}
