@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sign-up</title>
+	<style>
+		fieldset{
+			width: 400px;
+		}
+		.container{
+			height: 180px;
+			display: flex;
+			flex-flow: column;
+			justify-content: space-around;
+		}
+		input{
+			margin: 0;
+		}
+		.item{
+			width: 290px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.id-box{
+			display: flex;
+		}
+		.item .inner-item{
+			position: absolute;
+			left: 145px;
+		}
+		.item2{
+			display: flex;
+			justify-content: center;
+			gap: 5px;
+		}
+		.wrong{
+			background-color: red;
+		}
+		.correct{
+			background-color: green;
+		}
+	</style>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>회원 가입 양식</legend>
+			<div class="container">
+				<div class="id-box">
+					<div class="item">
+						<label for="id-in">아이디</label>
+						<input type="text" id="id-in" name="id">
+					</div>
+					<button class="btn-overlap" style="margin-left: 10px;">중복확인</button>
+				</div>
+				<div class="item">
+					<label for="pw">비밀번호</label>
+					<input type="password" id="pw">
+				</div>
+				<div class="item">
+					<label for="pw2">비밀번호 확인</label>
+					<input type="password" id="pw2">
+				</div>
+				<div class="item">
+					<label>지역</label>
+						<div class="inner-item">
+							<label for="seoul">서울</label>
+							<input id="seoul" type="radio" name="location">
+							<label for="busan">부산</label>
+							<input id="busan" type="radio" name="location">
+							<label for="deagu">대구</label>
+							<input id="deagu" type="radio" name="location">
+						</div>
+				</div>
+				<div class="item2">
+					<input  id="btn-reset" type="reset" value="초기화">
+					<input id="submit" type="submit" value="회원가입">
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
+	<script>
+		$('.btn-overlap').click(function(){
+			let id = $('#id-in').val();
+			let idRegex = /^[a-z0-9!@#]{6,12}$/;
+			
+			if(!idRegex.test(id)){
+				$('#id-in').addClass('wrong')
+				return false;
+			}else {
+				$('#id-in').addClass('correct')
+				return false;
+			}
+		})
+
+		$('#submit').click(function(){
+			if($('[name=location]:checked').length == 0){
+					alert('지역을 선택해주세요');
+					return false;
+				}
+		})
+
+		$('#btn-reset').click(function(){
+				$('#id-in').removeClass('wrong');
+				$('#id-in').reomoveClass('correct');
+		})
+	</script>
+</body>
+</html>

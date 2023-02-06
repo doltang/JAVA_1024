@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		fieldset{
+			width: 200px;
+			display: flex;
+			flex-flow: column;
+			gap: 20px;
+			padding: 20px;
+		}
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>회원가입</legend>
+			<input type="text" id="id" placeholder="아이디" name="id">
+			<button type="button" class="btn-check">중복확인</button>
+			<input type="submit" value="회원가입">
+		</fieldset>
+	</form>
+</body>
+<script>
+	$(function(){
+		$('.btn-check').click(function(){
+			let regex = /^[a-zA-Z0-9]{5,8}$/;
+			let val = $('[name=id]').val();
+			if(regex.test(val)){
+				alert('사용 가능한 아이디 입니다.');
+				isPossible = true;
+			}else{
+				alert('이미 사용중인 아이디입니다.');
+			}
+		});
+		$('form').submit(function(){
+			if(!isPossible){
+				alert('중복확인을 하세요');
+				return false;
+			}
+		});
+		$('[name=id]').change(function(){
+			isPossible = false;
+		});
+	});
+	let isPossible = false;
+</script>
+</html>
