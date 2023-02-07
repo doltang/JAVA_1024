@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.container{
+			display: flex;
+			height: 500px;
+			justify-content: center;
+			align-items: center;
+			gap: 100px;
+		}
+		.container .box{
+			display: flex;
+			width: 100px;
+			height: 50px;
+			border: 2px solid #000;
+			justify-content: center;
+			line-height: 50px;
+			cursor: pointer;
+		}
+		.container .pop-up{
+			display: none !important;
+			padding: 10px;
+			justify-content: space-between;
+			width: 500px;
+			height: 250px;
+			border: 2px solid #000;
+			z-index: 10;
+			box-sizing: border-box;
+			background-color: #fff;
+		}
+		.close{
+			width: 20px;
+			height: 20px;
+		}
+
+
+	</style>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="pop-up pop-up1">내용1 <button class="close">x</button></div>
+		<div class="pop-up pop-up2">내용2 <button class="close">x</button></div>
+		<div class="pop-up pop-up3">내용3 <button class="close">x</button></div>
+		<div class="box box1">내용1</div>
+		<div class="box box2">내용2</div>
+		<div class="box box3">내용3</div>
+	</div>
+</body>
+<script>
+	$(function(){
+		$('.box1').click(function(){popUp('.box1', '.pop-up1')});
+		$('.box2').click(popUp('.box2', '.pop-up2'));
+		$('.box3').click(popUp('.box3', '.pop-up3'));
+
+		function popUp(box, pop){
+			$(pop).css('display','flex');
+			$(box).css('display','none');
+			$('body').css('background', '#00000062');
+		}
+
+
+		/*
+			$('.box1').click(function(){
+				$('.pop-up1').css('display','flex');
+				$('.box').css('display','none');
+				$('body').css('background', '#00000062');
+			})
+			$('.box2').click(function(){
+				$('.pop-up2').css('display','flex');
+				$('.box').css('display','none');
+				$('body').css('background', '#00000062');
+			})
+			$('.box3').click(function(){
+				$('.pop-up3').css('display','flex');
+				$('.box').css('display','none');
+				$('body').css('background', '#00000062');
+			})
+
+			$('.close').click(function(){
+				$('.pop-up1').css('display','none');
+				$('.box').css('display','flex');
+				$('body').css('background', '');
+			})
+			$('.close').click(function(){
+				$('.pop-up2').css('display','none');
+				$('.box').css('display','flex');
+				$('body').css('background', '');
+			})
+			$('.close').click(function(){
+				$('.pop-up3').css('display','none');
+				$('.box').css('display','flex');
+				$('body').css('background', '');
+			})
+		*/
+	})
+</script>
+</html>
