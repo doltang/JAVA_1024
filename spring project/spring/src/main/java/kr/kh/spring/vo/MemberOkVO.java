@@ -2,6 +2,11 @@ package kr.kh.spring.vo;
 
 import java.util.Date;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class MemberOkVO {
 	String mo_me_id;
 	String mo_num;
@@ -11,4 +16,5 @@ public class MemberOkVO {
 		this.mo_num = mo_num;
 		this.mo_valid_time = new Date();
 	}
+
 }
