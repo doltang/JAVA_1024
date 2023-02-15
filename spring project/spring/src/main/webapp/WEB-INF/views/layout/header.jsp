@@ -10,12 +10,14 @@
   
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="<c:url value='/signup'></c:url>">회원가입</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<c:url value='/login'></c:url>">로그인</a>
-    </li>
+  	<c:if test="${user == null}">
+	    <li class="nav-item">
+	      <a class="nav-link" href="<c:url value='/signup'></c:url>">회원가입</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="<c:url value='/login'></c:url>">로그인</a>
+	    </li>
+    </c:if>
     <li class="nav-item">
       <a class="nav-link" href="#">Link 3</a>
     </li>
