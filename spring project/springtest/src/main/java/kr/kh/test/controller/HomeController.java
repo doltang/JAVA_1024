@@ -47,5 +47,24 @@ public class HomeController {
 		}
 		return mv;
 	 }
+	 
+	 @RequestMapping(value= "/login", method = RequestMethod.GET)
+	 public ModelAndView login(ModelAndView mv) {
+		 mv.setViewName("/member/login");
+		 return mv;
+	 }
+	 
+	 
+	 @RequestMapping(value = "/login", method=RequestMethod.POST)
+		public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
+			MemberVO user = memberService.login(member);
+			mv.addObject("user", user);
+			if(user != null)
+				mv.setViewName("redirect:/");
+			else
+				mv.setViewName("redirect:/login");
+			return mv;
+		}
+		
 	
 }
