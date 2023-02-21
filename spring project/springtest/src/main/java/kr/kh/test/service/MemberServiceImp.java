@@ -135,4 +135,10 @@ public class MemberServiceImp implements MemberService {
 			return user;
 		return null;
 	}
+
+	@Override
+	public boolean emailConfirm(MemberOKVO mok) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
