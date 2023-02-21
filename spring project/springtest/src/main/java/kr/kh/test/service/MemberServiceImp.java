@@ -51,14 +51,21 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public MemberVO login(MemberVO member) {
+		//아이디, 비번 유효성 검사
+		String idRegex = "^[a-zA-Z][a-zA-Z0-9!@#$]{4,12}$";
+		String pwRegex = "^[a-zA-Z0-9!@#$]{8,20}$";
 		if(member == null || member.getMe_id() == null
-				|| member.getMe_pw() == null)
+				|| member.getMe_pw() == null 
+				|| !Pattern.matches(idRegex, member.getMe_id()))
 			return null;
-		MemberVO dbMember = memberDao.selectMemberById(member.getMe_id());
-		if(dbMember == null)
+		// 아이디가 일차하는 회원 정보를 가져옴
+		MemberVO user = memberDao.selectMemberById(member.getMe_id());
+		System.out.println(user);
+		if(user == null)
 			return null;
-		if(passwordEncoder.matches(member.getMe_pw(), dbMember.getMe_pw()))
-			return dbMember;
+		// 입력한 비번과 암호화된 비번이 같은지를 확인
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
+			return user;
 		return null;
 	}
 }
