@@ -1,16 +1,15 @@
 package kr.kh.test.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.test.service.MemberService;
+import kr.kh.test.vo.MemberOKVO;
 import kr.kh.test.vo.MemberVO;
 
 
@@ -57,22 +56,33 @@ public class HomeController {
 	 
 	 @RequestMapping(value = "/login", method=RequestMethod.POST)
 		public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
-
 			MemberVO user = memberService.login(member);
 			mv.addObject("user", user);
 			if(user != null)
 				mv.setViewName("redirect:/");
 			else
 				mv.setViewName("redirect:/login");
-			System.out.println(user);
 			return mv;
 		}
+	
 	 
-	 @RequestMapping(value= "/logout", method = RequestMethod.GET)
-	 public ModelAndView logout(ModelAndView mv) {
-		 mv.setViewName("/member/login");
-		 return mv;
-	 }
+		@RequestMapping(value = "/logout", method=RequestMethod.POST)
+		public ModelAndView logoutPost(ModelAndView mv, HttpSession session) {
+			if(session != null)
+				session.removeAttribute("user");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
 		
+		 @RequestMapping(value= "/email/authentication", method = RequestMethod.GET)
+		 public ModelAndView emailAuthentication(ModelAndView mv, MemberOKVO mok) {
+			 if(memberService.emailConfirm(mok)) {
+				 System.out.println("인증성공");
+			 }else {
+				 System.out.println("인증 실패");
+			 }				 
+			 mv.setViewName("redirect:/");
+			 return mv;
+		 }
 	
 }
