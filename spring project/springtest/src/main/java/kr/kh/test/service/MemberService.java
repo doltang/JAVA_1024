@@ -11,6 +11,6 @@ public interface MemberService {
 
 	MemberVO login(MemberVO member);
 
-	boolean emailConfirm(MemberOKVO mok);
+	boolean emailAuthentication(MemberOKVO mok);
 
 }

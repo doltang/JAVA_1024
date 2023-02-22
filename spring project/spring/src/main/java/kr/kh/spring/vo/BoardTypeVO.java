@@ -25,4 +25,12 @@ public class BoardTypeVO {
 		}
 		return "";
 	}
+	public BoardTypeVO(int bt_num, String bt_type, String bt_name, int bt_r_authority, int bt_w_authority) {
+		this.bt_num = bt_num;
+		this.bt_type = bt_type;
+		this.bt_name = bt_name;
+		this.bt_r_authority = bt_r_authority;
+		this.bt_w_authority = bt_w_authority;
+	}
+	
 }
