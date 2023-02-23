@@ -1,9 +1,11 @@
 package kr.kh.test.service;
 
+import java.util.ArrayList;
+
 import kr.kh.test.vo.BoardTypeVO;
 
 public interface AdminService {
 
-	boolean boardCheck(BoardTypeVO bt);
+	ArrayList<BoardTypeVO> getBoardTypeList();
 
 }

@@ -1,5 +1,7 @@
 package kr.kh.test.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,8 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/boardTypeList")
 	public ModelAndView adminBoardTypeList(ModelAndView mv, BoardTypeVO bt) {
-		boolean res = adminService.boardCheck(bt);
+		ArrayList<BoardTypeVO> boardTypeList = adminService.getBoardTypeList();
+		mv.addObject("btList", boardTypeList);
 		mv.setViewName("/admin/boardTypeList");
 		return mv;
 	}

@@ -1,5 +1,7 @@
 package kr.kh.test.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,10 @@ public class AdminServiceImp implements AdminService{
 	BoardDAO boardDao;
 
 	@Override
-	public boolean boardCheck(int bt_num, String bt_type, String bt_name, int bt_r_authority, int bt_w_authority) {
-		BoardTypeVO btype = new BoardTypeVO(bt_num, bt_type, bt_name, bt_r_authority, bt_w_authority);
-		boardDAO.boardcheck
-		return false;
+	public ArrayList<BoardTypeVO> getBoardTypeList() {
+		int adminAuthority = 9; // 관리자 권한
+		return boardDao.selectBoardTypeList(adminAuthority);
 	}
+
+
 }
