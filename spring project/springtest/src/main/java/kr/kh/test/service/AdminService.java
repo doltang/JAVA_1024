@@ -7,5 +7,9 @@ import kr.kh.test.vo.BoardTypeVO;
 public interface AdminService {
 
 	ArrayList<BoardTypeVO> getBoardTypeList();
+	
+	boolean insertBoardType(BoardTypeVO bt);
+
+	boolean updateBoardType(BoardTypeVO bt);
 
 }
