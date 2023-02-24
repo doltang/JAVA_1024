@@ -15,7 +15,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${list}" var="bt">
+			<c:forEach items="${list}" var="bt" varStatus="vs">
 				<tr>
 					<form action="<c:url value='/admin/board/type/update'></c:url>" method="post">
 						<td class="form-group">${bt.bt_num }<input type="hidden" name="bt_num" value="${bt.bt_num}"></td>
@@ -43,7 +43,7 @@
 						</td>
 						<td>
 							<button class="btn btn-outline-warning btn-up">수정</button>
-							<button class="btn btn-outline-danger btn-up">삭제</button>
+							<button class="btn btn-outline-danger btn-del">삭제</button>
 						</td>
 					</form>
 				</tr>
@@ -81,7 +81,19 @@
 		</tfoot>
 	</table>
 </div>
-<c:url value='/admin/board/type/update'></c:url>
+<script>
+$('.btn-del').click(function(){
+	let res = confirm('게시글 타입을 삭제하면 해당 게시글 타입에 있는 모든 게시글들이 삭됩니다.\n삭제하시겠습니까?');
+	if(!res)
+		return false;
+	//클릭된 삭제 버튼의 조상 중에 form태그를 찾아서 action부분을 수정
+	let url = '<c:url value="/admin/board/type/delete"></c:url>';
+	$(this).parents('tr').find('form').attr('action', url);
+});
+</script>
+
+
+
 <!-- c:forech를 이용한 1부터 10까지 출력 예제 -->
 <!-- 
 <c:forEach begin="1" end="10" step="1" var="i">

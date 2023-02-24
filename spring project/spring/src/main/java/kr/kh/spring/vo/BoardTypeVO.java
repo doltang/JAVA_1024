@@ -18,19 +18,11 @@ public class BoardTypeVO {
 	}
 	private String getAuthority(int authority) {
 		switch(authority) {
-		case 0: return "비회원";
-		case 1: return "회원";
+		case 0:	return "비회원";
+		case 1:	return "회원";
 		case 9: return "관리자";
-		case 10: return "최고관리자";
+		case 10:return "최고 관리자";
 		}
 		return "";
 	}
-	public BoardTypeVO(int bt_num, String bt_type, String bt_name, int bt_r_authority, int bt_w_authority) {
-		this.bt_num = bt_num;
-		this.bt_type = bt_type;
-		this.bt_name = bt_name;
-		this.bt_r_authority = bt_r_authority;
-		this.bt_w_authority = bt_w_authority;
-	}
-	
 }
