@@ -5,7 +5,7 @@
 <script src="<c:url value='/resources/js/summernote-bs4.min.js'></c:url>"></script>
 <div class="container">
 	<h1>게시글 작성</h1>
-	<form action="<c:url value='/board/insert'></c:url>" method="post">
+	<form action="<c:url value='/board/insert'></c:url>" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="type">게시판:</label>
 			<select class="form-control" name="bo_bt_num" id="type">
@@ -19,7 +19,7 @@
 			<label for="title">제목:</label>
 			<input type="text" class="form-control" id="title" name="bo_title">
 		</div>
-		<div id="common" style="display: none">
+		<div id="common" style="display: block">
 			<div class="form-group">
 				<label for="content">내용:</label>
 			</div>
