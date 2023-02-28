@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.kh.spring.dao.BoardDAO;
 import kr.kh.spring.vo.BoardTypeVO;
+import kr.kh.spring.vo.BoardVO;
 
 @Service
 public class AdminServiceImp implements AdminService{
@@ -18,6 +19,7 @@ public class AdminServiceImp implements AdminService{
 	public ArrayList<BoardTypeVO> getBoardType() {
 		return boardDao.selectAllBoardType(9);
 	}
+	
 
 	@Override
 	public boolean insertBoardType(BoardTypeVO bt) {

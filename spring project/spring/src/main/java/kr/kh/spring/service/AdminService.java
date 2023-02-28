@@ -3,6 +3,7 @@ package kr.kh.spring.service;
 import java.util.ArrayList;
 
 import kr.kh.spring.vo.BoardTypeVO;
+import kr.kh.spring.vo.BoardVO;
 
 public interface AdminService {
 
@@ -13,5 +14,6 @@ public interface AdminService {
 	boolean updateBoardType(BoardTypeVO bt);
 
 	boolean deleteBoardType(int bt_num);
+
 
 }
