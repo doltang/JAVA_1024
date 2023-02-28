@@ -1,6 +1,5 @@
 package kr.kh.spring.service;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import kr.kh.spring.utils.UploadFileUtils;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
+import kr.kh.spring.vo.LikesVO;
 import kr.kh.spring.vo.MemberVO;
 
 @Service
@@ -107,9 +107,86 @@ public class BoardServiceImp implements BoardService {
 			return board;
 		return null;
 	}
+	private void deleteFileList(ArrayList<FileVO> fileList) {
+		if(fileList == null || fileList.size() == 0) 
+			return;
+		for(FileVO file : fileList) {
+			if(file == null)
+				continue;
+			UploadFileUtils.removeFile(uploadPath, file.getFi_name());
+			boardDao.deleteFile(file);
+		}
+		
+	}
 
 	@Override
 	public ArrayList<FileVO> getFileList(int bo_num) {
 		return boardDao.selectFileList(bo_num);
+	}
+
+	@Override
+	public int updateLikes(MemberVO user, int bo_num, int li_state) {
+		//기존에 추천/비추천 정보를 가져옴
+		LikesVO likesVo = boardDao.selectLikesById(user.getMe_id(), bo_num);
+		//없으면 추가
+		if(likesVo == null) {
+			//LikesVO 객체를 생성하여 
+			likesVo = new LikesVO(li_state, user.getMe_id(), bo_num);
+			//생성된 객체를 다오에게 전달해서 insert하라고 시킴
+			boardDao.insertLikes(likesVo);
+			//bo_num를 리턴
+			return li_state;
+		}
+		
+		//있으면 수정
+		if(li_state != likesVo.getLi_state()) {
+			//현재 상태와 기존 상태가 다르면 => 상태를 바꿔야함
+			likesVo.setLi_state(li_state);
+			//업데이트
+			 boardDao.updateLikes(likesVo);
+			//li_state를 리턴
+			return li_state;
+		}
+			//현재 상태와 기존상태가 같으면 => 취소
+			likesVo.setLi_state(0);
+			//업데이트
+			 boardDao.updateLikes(likesVo);
+			//0을 리턴
+		
+		return 0;
+	}
+
+	@Override
+	public LikesVO getLikes(int bo_num, MemberVO user) {
+		if(user == null)
+			return null;
+		return boardDao.selectLikesById(user.getMe_id(), bo_num);
+	}
+
+	@Override
+	public boolean deleteBoard(int bo_num, MemberVO user) {
+		if(user == null)
+			return false;
+		BoardVO board = boardDao.selectBoard(bo_num);
+		if(board == null)
+		//로그인한 사용자와 작성자가 다르면
+		if(board.getBo_me_id().equals(user.getMe_id()))
+			return false;	
+		ArrayList<FileVO>fileList = boardDao.selectFileList(bo_num);
+		deleteFileList(fileList);
+		return boardDao.deleteBoard(bo_num) != 0;
+	}
+
+	@Override
+	public BoardVO getBoardByWriteAuthority(int bo_num, MemberVO user) {
+		//게시글 가져오기
+		BoardVO board = boardDao.selectBoard(bo_num);
+		if(board == null)
+			return null;
+		if(user == null)
+			return null;
+		if(user.getMe_id().equals(board.getBo_me_id()))
+			return board;
+		return null;
 	}
 }

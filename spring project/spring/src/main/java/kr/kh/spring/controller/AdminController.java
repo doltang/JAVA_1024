@@ -20,8 +20,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/board/type/list")
 	public ModelAndView boardTypeList(ModelAndView mv) {
 		//admin 서비스에게 모든 게시글 타입을 가져오라고 요청
-		ArrayList<BoardTypeVO> list = adminService.getBoardType();
-		
+		ArrayList<BoardTypeVO> list = adminService.getBoardType();		
 		
 		mv.addObject("list", list);
 		mv.setViewName("/admin/boardTypeList");

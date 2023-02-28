@@ -29,7 +29,7 @@
 	<c:if test="${user != null && user.me_authority >= 9}">
 		<!-- Dropdown -->
 	    <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+	      <a class="nav-link dropdown-toggle" href="<c:url value='#'></c:url>" data-toggle="dropdown">
 	      관리자 메뉴
 	      </a>
 	      <div class="dropdown-menu">
@@ -41,4 +41,3 @@
     </c:if>
   </ul>
 </nav>
-<c:url value=''></c:url>
