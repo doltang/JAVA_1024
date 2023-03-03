@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
@@ -21,7 +22,7 @@ public interface BoardDAO {
 
 	void insertBoard(@Param("bo")BoardVO board);
 
-	ArrayList<BoardVO> selectBoardList();
+	ArrayList<BoardVO> selectBoardList(@Param("cri")Criteria cri);
 
 	void insertFile(@Param("file")FileVO fileVo);
 
@@ -33,7 +34,8 @@ public interface BoardDAO {
 
 	BoardTypeVO selectBoardType(@Param("bt_num")int bo_bt_num);
 
-	LikesVO selectLikesById(@Param("li_me_id")String me_id, @Param("li_bo_num")int bo_num);
+	LikesVO selectLikesById(@Param("li_me_id")String me_id, @Param("li_bo_num")int bo_num);
+
 	void insertLikes(@Param("li")LikesVO likesVo);
 
 	void updateLikes(@Param("li")LikesVO likesVo);
@@ -41,5 +43,13 @@ public interface BoardDAO {
 	int deleteBoard(@Param("bo_num")int bo_num);
 
 	void deleteFile(@Param("file")FileVO file);
+
+	int updateBoard(@Param("bo")BoardVO board);
+
+	FileVO selectFile(@Param("fi_num")int fileNum);
+
+	void updateBoardByLikes(@Param("bo_num")int bo_num);
+
+	int selectBoardTotalCount(@Param("cri")Criteria cri);
 
 }

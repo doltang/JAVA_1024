@@ -37,10 +37,17 @@
   	</insert>
   	<select id="selectBoardList" resultType="kr.kh.spring.vo.BoardVO">
   		select * 
-  			from board 
+  			from board
   			join board_type
-  			on bo_bt_num = bt_num
+  			on bo_bt_num = bt_num 
+  			where
+  				(bo_title like concat('%',#{cri.search} ,'%')
+  				or bo_content like concat('%',#{cri.search} ,'%'))
+  				<if test="cri.type != 0">
+  					and bo_bt_num = #{cri.type}
+  				</if>
   			order by bo_num desc
+  			limit #{cri.pageStart},#{cri.perPageNum}
   	</select>
   	<insert id="insertFile">
   		insert into file(fi_ori_name, fi_name, fi_bo_num)
@@ -57,27 +64,31 @@
   	<update id="updateBoardViews">
   		update board 
   			set 
-  				bo_views= bo_views+1 
+  				bo_views = bo_views+1 
   			where 
   				bo_num = #{bo_num}
   	</update>
   	<select id="selectBoardType" resultType="kr.kh.spring.vo.BoardTypeVO">
   		select * from board_type
-  			where bt_num  = #{bt_num}
+  			where bt_num = #{bt_num}
   	</select>
   	<select id="selectLikesById" resultType="kr.kh.spring.vo.LikesVO">
-  		select * from likes where li_bo_num = 
-  			#{li_bo_num} and li_me_id = #{li_me_id}
+  		select * 
+  			from
+  				likes
+  			where
+  				li_bo_num = #{li_bo_num} and li_me_id = #{li_me_id}
   	</select>
   	<insert id="insertLikes">
-  		insert into likes(li_state, li_me_id, li_bo_num)
-  		values(#{li.li_state},#{li.li_me_id},#{li.li_bo_num})
+  		insert into
+  			likes(li_state, li_me_id, li_bo_num)
+  			values(#{li.li_state},#{li.li_me_id},#{li.li_bo_num})
   	</insert>
   	<update id="updateLikes">
   		update likes
   			set
   				li_state = #{li.li_state}
-  			where 
+  			where
   				li_num = #{li.li_num}
   	</update>
   	<delete id="deleteBoard">
@@ -88,4 +99,42 @@
   		delete from file
   			where fi_num = #{file.fi_num}
   	</delete>
+  	<update id="updateBoard">
+  		update board
+  			set
+  				bo_title = #{bo.bo_title},
+  				bo_content = #{bo.bo_content},
+  				bo_bt_num = #{bo.bo_bt_num},
+  				bo_update_date = now()
+  			where
+  				bo_num = #{bo.bo_num}
+  	</update>
+  	<select id="selectFile" resultType="kr.kh.spring.vo.FileVO">
+  		select *
+  			from 
+  				file
+  			where
+  				fi_num = #{fi_num}
+  	</select>
+  	<update id="updateBoardByLikes">
+  		update board
+  			set
+  				bo_up = 
+  					(select count(*) from likes 
+  						where li_bo_num = #{bo_num} and li_state = 1),
+  				bo_down = 
+  					(select count(*) from likes 
+  						where li_bo_num = #{bo_num} and li_state = -1)
+  			where
+  				bo_num = #{bo_num}
+  	</update>
+  	<select id="selectBoardTotalCount" resultType="int">
+  		select count(*) from board
+  		  		where
+  				(bo_title like concat('%',#{cri.search} ,'%')
+  				or bo_content like concat('%',#{cri.search} ,'%'))
+  				<if test="cri.type != 0">
+  					and bo_bt_num = #{cri.type}
+  				</if>
+  	</select>
 </mapper>
