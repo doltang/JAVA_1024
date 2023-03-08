@@ -12,6 +12,8 @@ public interface BoardService {
 
 	ArrayList<BoardTypeVO> getBoardTypeList(MemberVO user);
 
-	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile files);
+	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files);
+
+	ArrayList<BoardVO> getBoardList();
 
 }

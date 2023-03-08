@@ -4,8 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class BoardVO {
 	int bo_num;
 	String bo_title;
