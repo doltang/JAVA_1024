@@ -1,4 +1,4 @@
-package kr.kh.spring.pagination;
+package kr.kh.test.pagination;
 
 import lombok.Data;
 
@@ -16,6 +16,8 @@ public class Criteria {
 	public Criteria() {
 		this.page = 1;
 		this.perPageNum = 10;
+		this.search = "";
+		this.type = 0;
 	}
 	/* 쿼리문에서 limit에 사용되는 인덱스를 계산하는 getter */
 	public int getPageStart() {
