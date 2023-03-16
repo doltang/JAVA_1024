@@ -11,26 +11,25 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<bean id="dataSource"
-      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-    <property name="url"
-              value="jdbc:mysql://localhost:3306/web?useSSL=false&serverTimezone=Asia/Seoul">
-    </property>
-    <property name="username" value="root"></property>
-    <property name="password" value="root"></property>
+	      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="url"
+	              value="jdbc:mysql://localhost:3306/spring?useSSL=false&amp;serverTimezone=Asia/Seoul">
+	    </property>
+	    <property name="username" value="root"></property>
+	    <property name="password" value="root"></property>
 	</bean>  
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="dataSource" />
-    <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
 	</bean>
 	<mybatis-spring:scan base-package="kr.kh.spring.dao"/>
-	
-	<!-- root-context.xml -->
+		
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	    <property name="host" value="smtp.gmail.com" />
 	    <property name="port" value="587" />
-	    <property name="username" value="doltangdoltang@gmail.com" />
+	    <property name="username" value="stajun@gmail.com" />
 	    <property name="password" value="" />
 	    <property name="javaMailProperties">
 	        <props>
@@ -42,5 +41,4 @@
 	        </props>
 	    </property>
 	</bean>
-		
 </beans>

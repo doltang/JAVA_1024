@@ -25,7 +25,7 @@ import kr.kh.test.vo.LikesVO;
 import kr.kh.test.vo.MemberVO;
 
 @Controller
-public class BoardController {
+public class CommentController {
 	
 	@Autowired
 	BoardService boardService;

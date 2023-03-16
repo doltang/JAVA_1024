@@ -12,7 +12,7 @@
 			<label for="id">아이디:</label>
 			<input type="text" class="form-control" id="id" name="me_id">
 		</div>
-		<button class="btn btn-outline-success col-12" type="button" onclick="alert('추후 구현')">아이디 중복체크</button>
+		<button class="btn btn-outline-success col-12 btn-check-id" type="button" id="idCheck">아이디 중복 체크</button>
 		<div class="form=group">
 			<label for="pw">비번:</label>
 			<input type="password" class="form-control" id="pw" name="me_pw">
@@ -35,6 +35,40 @@
 <script src="<c:url value='/resources/js/jquery.validate.min.js'></c:url>"></script>
 <script src="<c:url value='/resources/js/additional-methods.min.js'></c:url>"></script>
 <script>
+let idCheck = false;
+$('#idCheck').click(function(){
+	let me_id = $('[name = me_id]').val();
+	if(me_id.trim(length == 0){
+		alert('아이디를 입력하세요');
+		return;
+	}
+	let url = '<c:url value="/check/id"></c:url>'
+	let method = 'post';
+	let obj = {
+			me_id : me_id
+	}
+	$.ajax({
+		async:true,
+		type:method,
+		data: JSON.stringify(obj),
+		url: url,
+		dataType:"json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(data){
+			console.log(data);
+		    if(data.res){
+		    	alert('사용 가능한 아이디입니다.');
+		    	idCheck = true;
+		    }else{
+		    	alert('이미 사용중인 아이디입니다.');
+		    }
+		}
+	});
+});
+$('[name=me_id]').change()
+</script>
+<script>
+
 	$('form').validate({
 		rules:{
 			me_id : {
@@ -77,7 +111,15 @@
 				required : '필수 항목입니다',
 				date : '날짜 형식이 아닙니다'
 			}	
+		},
+		submitHandler : function(form){
+			if(!idCheck){
+				alert('아이디 중복 체크를 하세요');			
+				return false;
+			}
 		}
+		
+		
 	});
 	$.validator.addMethod(
 			"regex",
@@ -87,4 +129,5 @@
 			},
 			"Please check your input."
 		);
+	
 </script>

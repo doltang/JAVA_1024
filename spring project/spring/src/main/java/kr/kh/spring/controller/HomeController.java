@@ -2,28 +2,30 @@ package kr.kh.spring.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.kh.spring.service.MemberService;
-import kr.kh.spring.vo.MemberOkVO;
+import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class HomeController {
-	// 인터페이스의 구현 클래스를 가져다가 생성자를 통하지 않아도 객체를 자동으로 만들어줌
-	// 단 service 쪽에 @Service가 존재해야한다
+	
 	@Autowired
 	MemberService memberService;
 	
@@ -32,18 +34,17 @@ public class HomeController {
 		mv.setViewName("/main/home");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/signup", method=RequestMethod.GET)
 	public ModelAndView signup(ModelAndView mv) {
 		mv.setViewName("/member/signup");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/signup", method=RequestMethod.POST)
 	public ModelAndView signupPost(ModelAndView mv, MemberVO member) {
 		boolean isSignup = memberService.signup(member);
-		if(isSignup) {				
-			//아이디가 주어지면 주어진 아이디의 인증 번호를 발급하고,
+		if(isSignup) {
+			
+			//아이디가 주어지면 주어진 아이디의 인증 번호를 발급하고, 
 			//발급한 인증 번호를 DB에 저장하고, 이메일로 인증 번호가 있는 링크를 전송하는 기능
 			memberService.emailAuthentication(member.getMe_id(), member.getMe_email());
 			mv.setViewName("redirect:/");
@@ -54,31 +55,38 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/email", method=RequestMethod.GET)
-	public ModelAndView email(ModelAndView mv, MemberOkVO mok) {
-		System.out.println("인증 정보 : " + mok);
+	public ModelAndView emial(ModelAndView mv,MemberOKVO mok) {
 		if(memberService.emailAuthenticationConfirm(mok)) {
-			System.out.println("인증 성공");
+			
 		}else {
-			System.out.println("인증 실패");
+			
 		}
 		
 		mv.setViewName("redirect:/");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
-	public ModelAndView login(ModelAndView mv) {
+	public ModelAndView login(ModelAndView mv, HttpServletRequest request) {
+		String url = request.getHeader("Referer");
+		//다른 URL을 통해 로그인페이지로 온 경우
+		//(단, 로그인 실패로 인해서 login post에서 온 경우는 제외)
+		if(url != null && !url.contains("login")) {
+			request.getSession().setAttribute("prevURL", url);
+		}
 		mv.setViewName("/member/login");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
 		MemberVO user = memberService.login(member);
 		mv.addObject("user", user);
-		if(user != null)
+		if(user != null) { 
 			mv.setViewName("redirect:/");
-		else
+			//자동로그인 체크여부는 화면에서 가져오는 거지 DB에서 가져오는게 아님
+			//user는 DB에서 가져온 회원 정보라 자동 로그인 여부를 알 수가 없음
+			//그래서 화면에서 가져온 member에 있는 자동 로그인 여부를 user에 수정
+			user.setAutoLogin(member.isAutoLogin());
+		}else
 			mv.setViewName("redirect:/login");
 		return mv;
 	}
@@ -96,45 +104,34 @@ public class HomeController {
 		}
 		//세션에 있는 회원 정보를 삭제
 		session.removeAttribute("user");
+		user.setMe_session_limit(null);
+		memberService.updateMemberBySession(user);
 		mv.setViewName("redirect:/");
 		return mv;
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value = "/ex1")
-	public ModelAndView ex1(ModelAndView mv, String name, Integer age) {
+	public ModelAndView ex1(ModelAndView mv,String name, Integer age) {
 		System.out.println("예제1 - 화면에서 전달한 이름 : " + name);
 		System.out.println("예제1 - 화면에서 전달한 나이 : " + age);
 		mv.setViewName("/main/ex1");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/ex2")
-	public ModelAndView ex2(ModelAndView mv, String name, Integer age) {
+	public ModelAndView ex2(ModelAndView mv,String name, Integer age) {
 		System.out.println("예제2 - 화면에서 전달한 이름 : " + name);
 		System.out.println("예제2 - 화면에서 전달한 나이 : " + age);
 		mv.setViewName("/main/ex2");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/ex3")
-	public ModelAndView ex3(ModelAndView mv, String name, Integer age) {
+	public ModelAndView ex3(ModelAndView mv) {
 		mv.setViewName("/main/ex3");
 		return mv;
 	}
-	
-	
-	// url에 데이터를 전송하는 방식
 	@RequestMapping(value = "/ex3/{name}/{age}")
-	public ModelAndView exNameAge3(ModelAndView mv, 
+	public ModelAndView exNameAge3(ModelAndView mv,
 			@PathVariable("name")String name,
 			@PathVariable("age")int age) {
 		System.out.println("예제3 - 화면에서 전달한 이름 : " + name);
@@ -142,10 +139,9 @@ public class HomeController {
 		mv.setViewName("/main/ex3");
 		return mv;
 	}
-	
 	@RequestMapping(value = "/ex4")
 	public ModelAndView ex4(ModelAndView mv) {
-		/* 서버에서 화면으로 이름과 나이를 전송 
+		/* 서버에서 화면으로 이름과 나이를 전송
 		 * - 화면에서 호출할 이름(변수명)과 값을 지정
 		 * - addObject메소드를 통해서
 		 * */
@@ -154,6 +150,12 @@ public class HomeController {
 		mv.setViewName("/main/ex4");
 		return mv;
 	}
-	
-	
+	@ResponseBody
+	@RequestMapping(value = "/check/id", method=RequestMethod.POST)
+	public Map<String, Object> boardLike(@RequestBody MemberVO user) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		boolean res = memberService.checkId(user);
+		map.put("res", res);
+		return map;
+	}
 }

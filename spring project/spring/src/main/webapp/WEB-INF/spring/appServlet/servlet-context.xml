@@ -14,8 +14,8 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/download/**" location="file:///D:/uploadFiles/" />
-	
+	<resources mapping="/download/**" location="file:///D:/uploadfiles/" />
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -41,13 +41,25 @@
 	<beans:bean id="loginInterceptor" 
 		class="kr.kh.spring.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="adminInterceptor" 
-		class="kr.kh.spring.interceptor.AdminInterceptor"></beans:bean>		
+		class="kr.kh.spring.interceptor.AdminInterceptor"></beans:bean>
 	<beans:bean id="memberInterceptor" 
 		class="kr.kh.spring.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="guestInterceptor" 
 		class="kr.kh.spring.interceptor.GuestInterceptor"></beans:bean>
-	
+	<beans:bean id="autoLoginInterceptor" 
+		class="kr.kh.spring.interceptor.AutoLoginInterceptor"></beans:bean>
+	<beans:bean id="loginRedirectInterceptor" 
+		class="kr.kh.spring.interceptor.LoginRedirectInterceptor"></beans:bean>
+		
 	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="loginRedirectInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="autoLoginInterceptor"/>
+		</interceptor>
 		<interceptor>
 			<mapping path="/login"/>
 			<beans:ref bean="loginInterceptor"/>
@@ -68,8 +80,9 @@
 			<beans:ref bean="guestInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    <!-- 업로드 최대 크기 10Mb -->
-    <beans:property name="maxUploadSize" value="10485760"></beans:property>
-</beans:bean>
+	    <!-- 업로드 최대 크기 10Mb -->
+	    <beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
 </beans:beans>

@@ -1,6 +1,6 @@
 package kr.kh.spring.service;
 
-import kr.kh.spring.vo.MemberOkVO;
+import kr.kh.spring.vo.MemberOKVO;
 import kr.kh.spring.vo.MemberVO;
 
 public interface MemberService {
@@ -9,10 +9,14 @@ public interface MemberService {
 
 	void emailAuthentication(String me_id, String me_email);
 
-	boolean emailAuthenticationConfirm(MemberOkVO mok);
+	boolean emailAuthenticationConfirm(MemberOKVO mok);
 
 	MemberVO login(MemberVO member);
-	
-	
-	
+
+	boolean checkId(MemberVO user);
+
+	void updateMemberBySession(MemberVO user);
+
+	MemberVO getMemberBySession(String me_session_id);
+
 }
